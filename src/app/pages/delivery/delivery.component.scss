@@ -1,0 +1,170 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.zone {
+    max-width: 88vw;
+    padding: 0 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4vw;
+    @include screen-1200 {
+        max-width: 96vw;
+    }
+    @include screen-1000 {
+        flex-direction: column;
+    }
+    &__block {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1vw;
+        @include screen-1000 {
+            width: 100%;
+        }
+        @include screen-600 {
+            flex-direction: column;
+        }
+    }
+    &__img {
+        width: 276px;
+        @include screen-1400 {
+            width: 200px;
+        }
+        @include screen-1400 {
+            width: 176px;
+        }
+    }
+    &__text {
+        width: 270px;
+        text-align: center;
+    }
+    &__h3 {
+        margin-bottom: 10px;
+    }
+    &__p {
+        margin-top: 10px;
+        font-size: 16px;
+        text-align: center;
+    }
+}
+
+.map {
+    padding: 0 5vw;
+    &__block {
+        margin: 0 auto;
+    }
+    &__block,
+    &__map {
+        width: 950px;
+        height: 600px;
+        @include screen-1200 {
+            width: 800px;
+            height: 500px;
+        }
+        @include screen-1000 {
+            width: 650px;
+        }
+        @include screen-768 {
+            width: 100%;
+            height: 340px;
+        }
+    }
+    &__text {
+        width: 950px;
+        margin-top: 40px;
+        padding: 0 5vw;
+        @include screen-1200 {
+            width: 800px;
+        }
+        @include screen-1000 {
+            width: 650px;
+            padding: 0;
+        }
+        @include screen-768 {
+            width: 100%;
+        }
+    }
+}
+
+.payment {
+    &__h2 {
+    font-size: 42px;
+    line-height: 1.2em;
+    margin-bottom: 60px;
+    @include screen-1400 {
+        margin-bottom: 40px;
+    }
+    @include screen-768 {
+        margin-bottom: 30px;
+        font-size: 34px;
+    }
+    }
+    &__row {
+        margin-bottom: 90px;
+        display: flex;
+        justify-content: center;
+        @include screen-1000 {
+            flex-direction: column;
+        }
+        @include screen-1400 {
+            margin-bottom: 60px;
+        }
+        @include screen-600 {
+            margin-bottom: 30px;
+        }
+    }
+    &__block {
+        padding: 0 30px 20px;
+        display: flex;
+        position: relative;
+        @media screen and (min-width: 1000px) {
+            &+& ::before {
+                content: '';
+                width: 1px;
+                height: 100%;
+                background-color: $border-gray;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+    &__for-img {
+        width: 53px;
+        height: 50px;
+        margin-right: 20px;
+        background-color: $color_main;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include screen-1200 {
+            margin-right: 10px;
+        }
+    }
+    &__col {
+        width: 290px;
+        @include screen-1400 {
+            width: 220px;
+        }
+        @include screen-1000 {
+            width: 360px;
+        }
+        @include screen-600 {
+            width: 220px;
+        }
+    }
+    &__h4 {
+        margin: 15px 0;
+        @include screen-1000 {
+            margin: 5px 0;
+        }
+    }
+    &__p {
+        font-size: 16px;
+        line-height: 1.5em;
+    }
+}
