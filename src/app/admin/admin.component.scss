@@ -1,0 +1,47 @@
+@import '../shared/styles/fonts';
+@import '../shared/styles/variables';
+@import '../shared/styles/mixins';
+
+.admin {
+    font-family: 'RotondaC', sans-serif;
+    padding: 60px 20px;
+    display: flex;
+    column-gap: 30px;
+    &__section {
+        width: 100%;
+    }
+}
+
+.nav {
+    &__ul {
+        border-bottom: 1px solid $border_gray;
+    }
+    &__li {
+        border-top: 1px solid $border_gray;
+    }
+    &__link {
+        width: 13vw;
+        min-width: 100px;
+        height: 70px;
+        border-top: 4px solid transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $text_normal;
+        font-weight: normal;
+        &:hover {
+            color: $text_bold;
+            font-weight: bold;
+        }
+        &_active {
+            color: $text_bold;
+            font-weight: bold;
+            border-top: 4px solid $color_main;
+        }
+    }
+    &__btn {
+        width: 100px;
+        height: 60px;
+        margin: 20px auto;
+    }
+}

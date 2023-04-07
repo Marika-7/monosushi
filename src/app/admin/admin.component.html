@@ -1,0 +1,46 @@
+<div class="admin">
+
+    <nav class="nav">
+        <ul class="nav__ul">
+            <li class="nav__li">
+                <a [routerLink]="[ 'discount' ]" 
+                    routerLinkActive="nav__link_active" 
+                    class="nav__link">
+                    Акції
+                </a>
+            </li>
+            <li class="nav__li">
+                <a [routerLink]="[ 'category' ]" 
+                    routerLinkActive="nav__link_active" 
+                    class="nav__link">
+                    Категорії
+                </a>
+            </li>
+            <li class="nav__li">
+                <a [routerLink]="[ 'product' ]" 
+                    routerLinkActive="nav__link_active" 
+                    class="nav__link">
+                    Товари
+                </a>
+            </li>
+            <li class="nav__li">
+                <a [routerLink]="[ 'order' ]" 
+                    routerLinkActive="nav__link_active" 
+                    class="nav__link">
+                    Замовлення
+                </a>
+            </li>
+        </ul>
+        <!-- <button class="nav__btn btn btn-blue">Вихід</button> -->
+        <a [routerLink]="[ '/' ]" 
+            class="nav__btn btn btn-blue">
+            Вихід
+        </a>
+    </nav>
+
+    <div class="admin__section">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
+

@@ -7,12 +7,25 @@ import { ProductComponent } from './pages/product/product.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutComponent } from './pages/about/about.component';
 
+import { AdminComponent } from './admin/admin.component';
+import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
+import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
+
 const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'discount', component: DiscountComponent },
   {path: 'product/:category', component: ProductComponent },
   {path: 'delivery', component: DeliveryComponent },
-  {path: 'about', component: AboutComponent }
+  {path: 'about', component: AboutComponent },
+  {path: 'admin', component: AdminComponent, children: [
+    {path: 'discount', component: AdminDiscountComponent },
+    {path: 'category', component: AdminCategoryComponent },
+    {path: 'product', component: AdminProductComponent },
+    {path: 'order', component: AdminOrderComponent },
+    {path: '', pathMatch: 'full', redirectTo: 'discount' }
+  ] }
 ];
 
 @NgModule({

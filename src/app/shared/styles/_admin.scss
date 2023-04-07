@@ -1,0 +1,96 @@
+.section-admin {
+    width: 100%;
+    font-family: 'RotondaC', sans-serif;
+}
+
+.section-admin .btn {
+    width: 250px;
+    height: 60px;
+}
+
+.add {
+    &__input {
+        padding: 12px 20px;
+        border: 1px solid $border_gray;
+        border-radius: 10px;
+        font-size: 16px;
+        &:hover {
+            padding: 11px 19px;
+            border: 2px solid $color_main;
+        }
+    }
+    &__area {
+        resize: none;
+    }
+    &__progress {
+        width: 300px;
+        height: 25px;
+    }
+    &__inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    &__img {
+        height: 50px;
+    }
+    &__img-del {
+        background-color: transparent;
+        border: none;
+        color: $color_main;
+        cursor: pointer;
+    }
+    &__btn{
+        margin-top: 20px;
+    }
+}
+
+::file-selector-button {
+    margin-right: 8px;
+    padding: 3px 6px;
+    background-color: $color_main;
+    border: 1px solid $color_main;
+    border-radius: 5px;
+    font-family: inherit;
+    color: $text_bold;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+        background-color: $white;
+    }
+}
+
+.table {
+    width: 100%;
+    margin-top: 40px;
+    &__th {
+        height: 50px;
+        padding: 0 10px;
+        font-weight: normal;
+        text-align: left;
+        border-bottom: 2px solid $color_main;
+    }
+    &__td {
+        height: 80px;
+        padding: 0 10px;
+        border-bottom: 2px solid $border_gray;
+        text-align: left;
+    }
+    &__img {
+        height: 50px;
+    }
+    &__for-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;;
+        row-gap: 10px;
+    }
+    &__btn {
+        background-color: transparent;
+        border: none;
+        color: $color_main;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,71 @@
+<div class="section-admin">
+
+    <button class="btn btn-white">
+        Додати акцію
+    </button>
+
+    <div class="add">
+        <form>
+
+            <div class="add__grid">
+                <input type="text" placeholder="*Назва"  
+                    class="add__input">
+                <input type="text" placeholder="*Заголовок" 
+                    class="add__input">
+                <textarea placeholder="*Опис" 
+                    class="add__input add__area"></textarea>
+                <input type="file" 
+                    class="add__input add__file">
+                <progress [value]="25" max="100" 
+                    class="add__progress"></progress>
+                <div class="add__inner">
+                    <img src="../../../assets/images/discount_4.jpg" 
+                        class="add__img" alt="">
+                    <button class="add__img-del line">Видалити</button>
+                </div>
+            </div>
+
+            <button class="add__btn btn btn-blue" 
+                type="button" 
+                disabled>
+                Зберегти
+            </button>
+
+        </form>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="table__th">Дата</th>
+                <th class="table__th">Назва</th>
+                <th class="table__th">Заголовок</th>
+                <th class="table__th">Опис</th>
+                <th class="table__th">Картинка</th>
+                <th class="table__th">Дії</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="table__td">Дата</td>
+                <td class="table__td">Назва</td>
+                <td class="table__td">Заголовок</td>
+                <td class="table__td">Опис</td>
+                <td class="table__td">
+                    <img src="../../../assets/images/discount_1.jpg" 
+                        alt="" 
+                        class="table__img">
+                </td>
+                <td class="table__td">
+                    <span class="table__for-btn">
+                        <button class="table__btn line">Редагувати</button>
+                        <button class="table__btn line" disabled>Видалити</button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
