@@ -1,0 +1,110 @@
+<header class="header">
+
+    <a [routerLink]="[ '/' ]" class="logo">
+        <picture>
+            <source class="logo__img" media="(max-width: 768px)" 
+                srcset="../../../assets/images/logo-mobile.svg">
+            <img src="../../../assets/images/logo.svg" alt="Логотип" class="logo__img">
+        </picture>
+    </a>
+    
+    <div *ngIf="!screenIs1200">
+        <app-nav></app-nav>
+    </div>
+
+    <div class="burger" (clickOutside)="burgerIsOpen = false">
+        <button class="burger__btn" 
+            [ngClass]="{'border': !burgerIsOpen}" 
+            (click)="toggleBurgerMenu()">
+            <svg class="burger__svg" width="32" height="32">
+                <use href="../../../assets/images/sprite.svg#menu" 
+                    *ngIf="!burgerIsOpen"></use>
+                <use href="../../../assets/images/sprite.svg#cross" 
+                    *ngIf="burgerIsOpen"></use>
+            </svg>
+        </button>
+        <div class="burger__menu text-bold" 
+            *ngIf="!screenIs1200"
+            [ngClass]="{'show-menu': burgerIsOpen}">
+            <a [routerLink]="[ '/delivery' ]" 
+                class="burger__link" 
+                (click)="closeBurgerMenu()">Доставка та оплата</a>
+            <a [routerLink]="[ '/about' ]" 
+                class="burger__link" 
+                (click)="closeBurgerMenu()">Про нас</a>
+            <a [routerLink]="[ '/discount' ]" 
+                class="burger__link" 
+                (click)="closeBurgerMenu()">Акції</a>
+        </div>
+    </div>
+
+    <div class="mobile" 
+        *ngIf="screenIs1200" 
+        [ngClass]="{'mobile-show': burgerIsOpen}">
+    <div class="mobile__menu text-bold">
+        <a [routerLink]="[ '/product/sauses' ]" 
+            class="mobile__link mobile__link_sauses">
+            <img src="../../../assets/images/nav-img-sauses.svg" alt="Соуси">
+            <span>Соуси</span>
+        </a>
+        <a [routerLink]="[ '/delivery' ]" 
+            class="mobile__link" 
+            (click)="closeBurgerMenu()">
+            Доставка та оплата</a>
+        <a [routerLink]="[ '/about' ]" 
+            class="mobile__link" 
+            (click)="closeBurgerMenu()">
+            Про нас</a>
+        <a [routerLink]="[ '/discount' ]" 
+            class="mobile__link" 
+            (click)="closeBurgerMenu()">
+            Акції</a>
+        <span class="mobile__tel text-bold">(097) 878 08 37</span>
+        <div class="mobile__callback callback-m" *ngIf="screenIs1200">
+            <button class="callback-m__btn btn btn-blue">
+                <img src="../../../assets/images/phone.svg" alt="Callback">
+                <span>Ми зателефонуємо</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+    <div class="callback" 
+        *ngIf="!screenIs1200">
+    <button class="callback__btn btn btn-blue">
+        <img src="../../../assets/images/phone.svg" alt="Callback">
+            <span class="callback__span">Ми зателефонуємо</span>
+    </button>
+</div>
+
+<div class="info">
+    <a href="tel:0978780837" class="info__link">
+        <span class="info__tel link-hover text-bold">(097) 878 08 37</span>
+        <img src="../../../assets/images/phone.svg" alt="Call" 
+            class="info__img">
+    </a>
+    <p class="info__work text-normal">Працюємо з <b>11:00</b> до <b>22:30</b></p>
+</div>
+
+    <div class="user border">
+        <!-- <button class="user__btn">
+            <img src="../../../assets/images/user.svg" alt="User">
+        </button> -->
+        <a [routerLink]="[ '/admin']" class="user__btn">
+            <img src="../../../assets/images/user.svg" alt="User">
+        </a>
+    </div>
+
+    <div class="basket">
+        <span class="basket__combo">
+            <img src="../../../assets/images/basket.svg" alt="Кошик" 
+                class="basket__img">
+            <span class="basket__number">0</span>
+        </span>
+        <span class="basket__uah">
+            <span class="text-bold">0</span>
+            грн
+        </span>
+    </div>
+
+</header>

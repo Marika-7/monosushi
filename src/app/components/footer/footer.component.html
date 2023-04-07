@@ -1,0 +1,83 @@
+<footer class="footer">
+
+    <a [routerLink]="[ '/' ]" class="footer__logo logo">
+        <img src="../../../assets/images/logo.svg" alt="Logo" 
+            class="logo__img">
+    </a>
+
+    <div class="footer__links links">
+        <a [routerLink]="[ '/discount' ]" class="links__item link-hover">Акції</a>
+        <a [routerLink]="[ '/about' ]" class="links__item link-hover">Про нас</a>
+        <a [routerLink]="[ '/delivery' ]" class="links__item link-hover">Доставка</a>
+    </div>
+
+    <div class="footer__info info">
+        <div class="info__block info__block_big">
+            <h6 class="info__h6 text-bold">Точки самовивозу</h6>
+            <p class="info__p text-normal">
+                <span class="info__span">вул. Володимира Великого, 10в</span>
+                <span class="info__span">вул. Чорновола, 95</span>
+            </p>
+        </div>
+        <div class="info__block">
+            <h6 class="info__h6 text-bold">Оформити замовлення</h6>
+            <p class="info__p text-bold">
+                <a href="#" class="link-hover">(097) 878 08 37</a>
+            </p>
+        </div>
+        <div class="info__block">
+            <h6 class="info__h6 text-bold">Графік роботи</h6>
+            <p class="info__p text-normal">працюємо з 11:00 до 22:30</p>
+        </div>
+    </div>
+
+    <div class="footer__copyright copyright">
+        <p class="copyright__p text-normal">© 2023 Monosushi</p>
+    </div>
+
+    <div class="footer__payment payment">
+        <span class="payment__span">
+            <img src="../../../assets/images/pay-card-img-1.svg" 
+                alt="MasterCard" 
+                class="payment__img">
+        </span>
+        <span class="payment__span">
+            <img src="../../../assets/images/pay-card-img-2.svg" 
+                alt="Visa" 
+                class="payment__img">
+        </span>
+        <span class="payment__span">
+            <img src="../../../assets/images/pay-card-img-3.svg" 
+                alt="LiqPay" 
+                class="payment__img">
+        </span>
+    </div>
+
+    <div class="footer__social social">
+        <span class="social__span text-normal">Слідкуйте за нами</span>
+        <div class="social__block">
+            <a href="https://www.facebook.com/monosushi.com.ua" target="_blank" 
+                class="social__link btn btn-blue">
+                <img src="../../../assets/images/facebook-icon.svg" 
+                    alt="link to Facebook">
+            </a>
+            <a href="https://www.instagram.com/monosushi.com.ua" target="_blank" 
+                class="social__link btn btn-blue">
+                <img src="../../../assets/images/instagram-icon.svg" 
+                    alt="link to Instagram">
+            </a>
+        </div>
+    </div>
+
+    <div class="footer__signature signature">
+        <a href="http://redstone.media/" target="_blank" 
+            class="signature__link text-normal">
+            <span>Створення сайтів</span>
+            <img src="../../../assets/images/redstone-icon-black.svg" alt="Site  creator Redstone" 
+                class="signature__logo">
+        </a>
+    </div>
+
+</footer>
+
+<app-nav class="nav-footer"></app-nav>

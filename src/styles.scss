@@ -1,1 +1,261 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/shared/styles/base';
+@import './app/shared/styles/fonts';
+@import './app/shared/styles/variables';
+@import './app/shared/styles/mixins';
+
+.container {
+    margin: 60px auto 120px;
+    font-family: 'RotondaC', sans-serif;
+    font-weight: normal;
+    color: $text_normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include screen-1400 {
+        margin: 40px auto 90px;
+    }
+    @include screen-768 {
+        margin: 30px auto 50px;
+    }
+}
+
+.section {
+    margin-bottom: 90px;
+    padding: 0 10vw;
+    @include screen-768 {
+        margin-bottom: 40px;
+        padding: 0 5vw;
+    }
+}
+
+.section_text {
+    @extend .section;
+    padding: 0 16vw;
+    @include screen-1000 {
+        padding: 0 12vw;
+    }
+    @include screen-768 {
+        padding: 0 5vw;
+    }
+}
+
+.h1 {
+    margin-bottom: 60px;
+    padding-top: 10px;
+    color: $text_bold;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 1.2em;
+    text-align: center;
+    position: relative;
+    @include screen-1400 {
+        margin-bottom: 40px;
+    }
+    @include screen-768 {
+        margin-bottom: 30px;
+        font-size: 34px;
+    }
+    &::before {
+        content: '';
+        width: 100%;
+        height: 5px;
+        background-color: $color_main;
+        border-radius: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.h2 {
+    margin-bottom: 25px;
+    color: $text_bold;
+    font-size: 34px;
+    font-weight: bold;
+    line-height: 1.4em;
+    text-align: center;
+    @include screen-768 {
+        margin-bottom: 15px;
+        font-size: 26px;
+    }
+}
+
+.h3 {
+    color: $text_bold;
+    font-weight: bold;
+    font-size: 26px;
+    @include screen-768 {
+        font-size: 22px;
+    }
+}
+
+.h4 {
+    color: $text_bold;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.h5 {
+    margin-bottom: 20px;
+    color: $text_bold;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+}
+
+.text {
+    color: $text_normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.5em;
+    text-align: justify;
+    @include screen-768 {
+        font-size: 16px;
+    }
+}
+
+.text-bold {
+    font-weight: bold;
+    color: $text_bold;
+}
+
+.text-normal {
+    font-weight: normal;
+    color: $text_normal;
+}
+
+.b {
+    font-size: inherit;
+    font-weight: bold;
+    color: $text_bold;
+}
+
+.green {
+    color: $green;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+@media screen and (min-width: 1200px) {
+    .border {
+        position: relative;
+        cursor: pointer;
+        &::before, &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 0;
+        }
+        &::before {
+            top: 0;
+            left: 0;
+        }
+        &::after {
+            bottom: 0;
+            right: 0;
+        }
+        &:hover {
+            &::before, &::after {
+                width: 100%;
+                height: 100%;
+            }
+            &::before {
+                border-top-color: $color_main;
+                border-right-color: $color_main;
+                transition: width .1s ease-out, height .1s ease-out .1s;
+            }
+            &::after {
+                border-bottom-color: $color_main;
+                border-left-color: $color_main;
+                transition: width .1s ease-out .2s, height .1s ease-out .3s;
+            }
+        }
+    }
+}
+
+.line {
+    position: relative;
+    &::after {
+        content: '';
+        width: 0;
+        height: 2px;
+        background-color: $color_main;
+        position: absolute;
+        bottom: 0;
+        left: auto;
+        right: 0;
+        transition: .35s;
+    }
+    &:hover::after {
+        width: 100%;
+        left: 0;
+        right: auto;
+    }
+}
+
+.btn {
+    border-radius: 10px;
+    border: 2px solid transparent;
+    // font-family: 'RotondaC', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: $text_bold;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: transparent;
+    }
+}
+
+.btn-blue {
+    background-color: $color_main;
+    border-color: $color_main;
+    &:disabled {
+        // filter: opacity(50%);
+        &:hover {
+            background-color: $color_main;
+        }
+    }
+}
+
+.btn-white {
+    background-color: $white;
+    border: 2px solid $color_main;
+    &:hover {
+        background-color: $color_main;
+    }
+}
+
+:disabled {
+    filter: opacity(50%);
+}
+
+:focus {
+    outline-color: $text_normal;
+}
+
+.link-hover {
+    color: $text_bold;
+    cursor: pointer;
+    &:hover {
+        color: $color_main;
+    }
+}
+
+.active-page {
+    border: 2px solid $color_main;
+    border-radius: 10px;
+    @include screen-1200 {
+        border: none;
+    }
+}

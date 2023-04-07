@@ -1,0 +1,31 @@
+app/
+    components/
+        header.component
+        footer.component
+        nav.component
+    pages/
+        home.component
+        discount.component (акції)
+        product-category/
+            rolls (роли)
+            sets (сети)
+            drinks (напої)
+            sauses (соуси)
+        delivery (доставка та оплата)
+        about.component (про нас)
+    shared/
+        styles/
+            _base.scss
+            _fonts.scss
+            _variables.scss
+            _mixins.scss
+        interfaces/
+        pipes/
+        directives/
+        guards/
+        services/
+    admin.components/
+        admin-discount.component (акції)
+        admin-category.component (категорії)
+        admin-product.component (товари)
+        admin-order.component (замовлення)

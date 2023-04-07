@@ -1,0 +1,255 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.footer {
+    width: 100%;
+    min-height: 180px;
+    padding: 25px 35px;
+    background-color: transparent;
+    border-top: 4px solid $color_main;
+    display: grid;
+    grid-template-areas: 
+        'a b c c'
+        'd e f g';
+    row-gap: 15px;
+    justify-items: stretch;
+    align-items: center;
+    text-align: center;
+    font-family: 'RotondaC', sans-serif;
+    @include screen-1400 {
+        min-height: 150px;
+        padding: 20px;
+    }
+    @include screen-1200 {
+        margin-bottom: 60px;
+        padding: 15px;
+    }
+    @include screen-1000 {
+        grid-template-areas: 
+            'a a b b'
+            'c c c c'
+            'd e f g';
+    }
+    @include screen-768 {
+        grid-template-areas: 
+            'a a'
+            'f f'
+            'b b'
+            'c c'
+            'e e'
+            'd g';
+    }
+    @include screen-600 {
+        grid-template-areas: 
+            'a a'
+            'f f'
+            'b b'
+            'c c'
+            'e e'
+            'd d'
+            'g g';
+    }
+    &__logo {
+        grid-area: a;
+    }
+    &__links {
+        grid-area: b;
+    }
+    &__info {
+        grid-area: c;
+    }
+    &__copyright {
+        grid-area: d;
+    }
+    &__payment {
+        grid-area: e;
+    }
+    &__social {
+        grid-area: f;
+    }
+    &__signature {
+        grid-area: g;
+    }
+}
+
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @include screen-1000 {
+        justify-content: center;
+    }
+    &__img {
+        width: 136px;
+        @include screen-1400 {
+            width: 123px;
+        }
+        @include screen-1200 {
+            width: 110px;
+        }
+    }
+}
+
+.links {
+    padding: 0 10vw;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    @include screen-1200 {
+        gap: 20px;
+    }
+    @include screen-600 {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    &__item {
+        font-size: 16px;
+        @include screen-1400 {
+            font-size: 14px;
+        }
+    }
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5px;
+    @include screen-768 {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    &__block {
+        &_big {
+            flex-shrink: 0;
+        }
+    }
+    &__h6 {
+        font-size: 14px;
+    }
+    &__p {
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5px;
+    }
+    &__span {
+        margin-bottom: 5px;
+    }
+}
+
+.copyright {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @include screen-600 {
+        justify-content: center;
+    }
+    &__p {
+        font-size: 14px;
+        @include screen-1400 {
+            font-size: 12px;
+        }
+    }
+}
+
+.payment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    &__span {
+        width: 69px;
+        height: 39px;
+        border: 1px solid $border-gray;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include screen-1400  {
+            width: 56px;
+            height: 33px;
+        }
+    }
+    &__img {
+        max-width: 45px;
+        @include screen-1400 {
+            max-width: 30px;
+        }
+    }
+}
+
+.social {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    @include screen-1200 {
+        gap: 10px;
+    }
+    @include screen-1000 {
+        justify-content: center;
+    }
+    &__span {
+        font-size: 14px;
+        @include screen-1200 {
+            font-size: 12px;
+        }
+        @include screen-768 {
+            display: none;
+        }
+    }
+    &__block {
+        display: flex;
+        gap: 5px;
+    }
+    &__link {
+        width: 49px;
+        height: 49px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include screen-1400 {
+            width: 40px;
+            height: 40px;
+        }
+        @include screen-1200 {
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
+
+.signature {
+    &__link {
+        font-size: 14px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 5px;
+        @include screen-600 {
+            justify-content: center;
+        }
+        @include screen-1200 {
+            font-size: 12px;
+        }
+    }
+    &__logo {
+        width: 75px;
+    }
+}
+
+.nav-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: $white;
+    border-top: 1px solid $border-gray;
+    display: none;
+    @include screen-1200 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

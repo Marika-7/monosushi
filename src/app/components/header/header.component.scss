@@ -1,0 +1,301 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.header {
+    width: 100%;
+    height: 110px;
+    background-color: $white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+    font-family: 'RotondaC', sans-serif;
+    font-weight: normal;
+    color: $text_bold;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include screen-1600 {
+        height: 95px;
+    }
+    @include screen-1200 {
+        height: 60px;
+    }
+}
+
+.logo {
+    width: 217px;
+    height: 100%;
+    background-color: $color_main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include screen-1600 {
+        width: 166px;
+    }
+    @include screen-1200 {
+        width: 136px;
+    }
+    @include screen-768 {
+        width: 70px;
+    }
+    &__img {
+        width: 173px;
+        @include screen-1600 {
+            width: 136px;
+        }
+        @include screen-1200 {
+            width: 106px;
+        }
+        @include screen-768 {
+            width: 40px;
+
+        }
+    }
+}
+
+.burger {
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include screen-1200 {
+        order: 1;
+    }
+    &__btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 5;
+    }
+    &__svg {
+        stroke: $text_bold;
+        position: relative;
+    }
+    &__menu {
+        background-color: $white;
+        min-width: max-content;
+        width: 110px;
+        height: max-content;
+        padding: 28px 25px 20px;
+        border: 2px solid $color_main;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 0;
+        left: -31px;
+        z-index: 4;
+        opacity: 0;
+        visibility: hidden;
+        transition: .35s;
+    }
+    &__link {
+        padding: 12px 16px;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        font-size: 16px;
+        &:hover {
+            border-color: $color_main;
+        }
+    }
+}
+
+.show-menu {
+    padding-top: 88px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile {
+    width: 0;
+    height: calc(100vh - 120px);
+    background-color: $color_overlay;
+    font-size: 14px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    opacity: 0;
+    transition: opacity .35s;
+    &__menu {
+        width: 0px;
+        height: 100%;
+        padding: 10px 20px;
+        background-color: white;
+        border-top: 1px solid $border-gray;
+        position: absolute;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        transition: width .35s;
+    }
+    &-show {
+        width: 100vw;
+        opacity: 1;
+    }
+    &-show &__menu {
+        width: 50%;
+        min-width: 300px;
+    }
+    &__link {
+        &_sauses {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+    &__tel {
+        margin-top: 15px;
+        cursor: pointer;
+    }
+    &__callback {
+        margin-top: 20px;
+    }
+}
+
+.callback-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__btn {
+        height: 46px;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+.callback {
+    &__btn {
+        height: 46px;
+        padding: 10px 15px;
+    }
+    &__span {
+        font-size: 14px;
+        @include screen-1600 {
+            font-size: 12px;
+        }
+        @include screen-1400 {
+            display: none;
+        }
+    }
+}
+
+.info  {
+    text-align: center;
+    &__link {
+        @include screen-1200 {
+            display: inline-block;
+            padding: 10px 15px;
+        }
+    }
+    &__tel {
+        font-size: 18px;
+        @include screen-1600 {
+            font-size: 16px;
+        }
+        @include screen-1200 {
+            display: none;
+        }
+    }
+    &__img {
+        display: none;
+        @include screen-1200 {
+            display: block;
+            width: 14px;
+        }
+    }
+    &__work {
+        padding-top: 5px;
+        font-size: 14px;
+        @include screen-1400 {
+            font-size: 12px;
+        }
+        @include screen-1200 {
+            display: none;
+        }
+    }
+}
+
+.user {
+    &__btn {
+        width: 46px;
+        height: 46px;
+        border: none;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+.basket {
+    background-color: $color_main;
+    width: 154px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    @include screen-1600 {
+        width: 134px;
+    }
+    @include screen-1200 {
+        order: 2;
+    }
+    @include screen-768 {
+        width: 70px;
+    }
+    &__combo {
+        position: relative;
+    }
+    &__img {
+        width: 38px;
+        @include screen-768 {
+            width: 30px;
+        }
+    }
+    &__number {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background-color: $white;
+        font-size: 14px;
+        text-align: center;
+        line-height: 26px;
+        position: absolute;
+        top: 0;
+        left: 22px;
+        @include screen-1600 {
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 12px;
+        }
+        @include screen-768 {
+            left: 15px;
+        }
+    }
+    &__uah {
+        padding-top: 6px;
+        font-size: 18px;
+        @include screen-1600 {
+            font-size: 16px;
+        }
+        @include screen-768 {
+            font-size: 14px;
+        }
+    }
+}

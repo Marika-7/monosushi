@@ -1,0 +1,55 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.nav {
+    background-color: $white;
+    font-family: 'RotondaC', sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    &__item {
+        width: 99px;
+        height: 85px;
+        margin: 0 5px;
+        @include screen-1600 {
+            width: 75px;
+            height: 70px;
+        }
+        @include screen-1200 {
+            width: calc(100vw / 4);
+            height: 50px;
+            margin: 0;
+        }
+        &:nth-child(5) {
+            @include screen-1200 {
+                display: none;
+            }
+        }
+    }
+    &__link {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+    &__img {
+        width: 34px;
+        height: 34px;
+        @include screen-1600 {
+            width: 28px;
+            height: 30px;
+        }
+    }
+    &__name {
+        margin-top: 4px;
+        font-size: 16px;
+        @include screen-1600 {
+            font-size: 14px;
+        }
+    }
+}
