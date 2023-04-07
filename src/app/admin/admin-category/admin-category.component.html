@@ -1,5 +1,96 @@
 <div class="section-admin">
-    <button class="btn btn-white">
-        admin-category works!
+
+    <button class="btn btn-white" 
+        (click)="openInputs()">
+        <span *ngIf="!editStatus">Додати категорію</span>
+        <span *ngIf="editStatus">Редагувати</span>
     </button>
+
+    <div class="add" 
+        *ngIf="inputsIsOpen">
+
+        <form 
+            [formGroup]="categoryForm" 
+            (ngSubmit)="saveCategory()">
+            <div class="add__grid">
+                
+                <input type="text" placeholder="*Назва" 
+                    class="add__input" 
+                    formControlName="name">
+                <input type="text" placeholder="*Шлях" 
+                    class="add__input" 
+                    formControlName="path">
+
+                <ng-container *ngIf="!isUploaded">
+                    <input type="file"
+                        class="add__input add__file" 
+                        (change)="upload($event)">
+                    <progress [value]="uploadPercent" max="100" 
+                        class="add__progress"></progress>
+                </ng-container>
+
+                <ng-container *ngIf="isUploaded">
+                    <div class="add__inner">
+                        <img [src]="valueByControl('imagePath')"
+                            alt="valueByControl('name')" 
+                            class="add__img">
+                            <button class="add__img-del line" 
+                                type="button" 
+                                (click)="deleteImage()">
+                                Видалити
+                            </button>
+                    </div>
+                </ng-container>
+            </div>
+
+            <button class="add__btn btn btn-blue" 
+                type="submit" 
+                [disabled]="categoryForm.invalid">
+                Зберегти
+            </button>
+
+        </form>
+    </div>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th class="table__th">№</th>
+                <th class="table__th">Назва</th>
+                <th class="table__th">Шлях</th>
+                <th class="table__th">Картинка</th>
+                <th class="table__th">Дії</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let category of adminCategories">
+                <td class="table__td">{{ category.id }}</td>
+                <td class="table__td">{{ category.name }}</td>
+                <td class="table__td">{{ category.path }}</td>
+                <td class="table__td">
+                    <img [src]="category.imagePath" 
+                        [alt]="category.name" 
+                        class="table__img">
+                </td>
+
+                <td class="table__td">
+                    <span class="table__for-btn">
+                        <button class="table__btn line" 
+                            (click)="editCategory(category)">
+                            Редагувати
+                        </button>
+                        <button class="table__btn line" 
+                            [disabled]="editStatus"
+                            (click)="deleteCategory(category)">
+                            Видалити
+                        </button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
 </div>
