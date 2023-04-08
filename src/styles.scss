@@ -2,6 +2,7 @@
 @import './app/shared/styles/fonts';
 @import './app/shared/styles/variables';
 @import './app/shared/styles/mixins';
+@import 'ngx-toastr/toastr';
 
 .container {
     margin: 60px auto 120px;

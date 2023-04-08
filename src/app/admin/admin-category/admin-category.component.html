@@ -1,7 +1,7 @@
 <div class="section-admin">
 
     <button class="btn btn-white" 
-        (click)="openInputs()">
+        (click)="toggleOpenForm()">
         <span *ngIf="!editStatus">Додати категорію</span>
         <span *ngIf="editStatus">Редагувати</span>
     </button>
@@ -23,9 +23,9 @@
 
                 <ng-container *ngIf="!isUploaded">
                     <input type="file"
-                        class="add__input add__file" 
+                        class="add__input" 
                         (change)="upload($event)">
-                    <progress [value]="uploadPercent" max="100" 
+                    <progress [value]="imageService.uploadPercent" max="100" 
                         class="add__progress"></progress>
                 </ng-container>
 

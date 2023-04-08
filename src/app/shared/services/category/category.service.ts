@@ -16,8 +16,12 @@ export class CategoryService {
     private http: HttpClient
   ) { }
 
-  getAll():Observable<ICategoryResponse[]> {
+  getAll(): Observable<ICategoryResponse[]> {
     return this.http.get<ICategoryResponse[]>(this.api.categories);
+  }
+  
+  getOne(id: number): Observable<ICategoryResponse> {
+    return this.http.get<ICategoryResponse>(`${this.api.categories}/${id}`);
   }
 
   create(category: ICategoryRequest): Observable<ICategoryResponse> {

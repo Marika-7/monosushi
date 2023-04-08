@@ -66,6 +66,94 @@
       "path": "sauses",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-sauses.svg?alt=media&token=b7c0ed26-0acd-43d3-b9e3-266c2c4b885b",
       "id": 5
+    },
+    {
+      "name": "hjghj",
+      "path": "fghfgh",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-gift.svg?alt=media&token=dda5b478-118f-4f93-806f-285d5925b4c3",
+      "id": 6
+    }
+  ],
+  "products": [
+    {
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=8a7c4895-acf8-4015-95c6-bfc317a5bf60",
+        "id": 2
+      },
+      "name": "Філадельфія з лососем",
+      "path": "filadelfiya-z-lososem",
+      "description": "Риc, крем сир, огірок, лосось",
+      "weight": 280,
+      "price": 267,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=1b95a1a5-7241-4b16-8f14-4cc14b3ae101",
+      "count": null,
+      "id": 1
+    },
+    {
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=8a7c4895-acf8-4015-95c6-bfc317a5bf60",
+        "id": 2
+      },
+      "name": "Каліфорнія з крабом",
+      "path": "kaliforniya-z-krabom",
+      "description": "Рис, спайсі соус, авокадо, огірок, краб, кунжут",
+      "weight": 250,
+      "price": 243,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F3.1-kaliforniya-z-krabom-v-kunzhuti.jpg?alt=media&token=3fe3d96d-1ce9-4761-85ff-466314f553a9",
+      "count": 1,
+      "id": 2
+    },
+    {
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=8a7c4895-acf8-4015-95c6-bfc317a5bf60",
+        "id": 2
+      },
+      "name": "Запечений сирний з креветкою",
+      "path": "zapechenyj-syrnyj-z-krevetkoyu",
+      "description": "Рис, крем сир, салат айсберг, креветка, кунжут, сирний соус, унагі соус",
+      "weight": 330,
+      "price": 324,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F2.-zapechenyj-syrnyj-z-los.jpg?alt=media&token=82556d34-e68a-463c-af17-8bb239635e03",
+      "count": null,
+      "id": 3
+    },
+    {
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=8a7c4895-acf8-4015-95c6-bfc317a5bf60",
+        "id": 2
+      },
+      "name": "Вегетаріанський з чукою",
+      "path": "vegetarianskyj-z-chukoyu",
+      "description": "Рис, крем сир, авокадо, айсберг, кунжут, чука, горіховий соус, мигдаль",
+      "weight": 300,
+      "price": 229,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F6.-vegetarianskyj-z-chukoyu.jpg?alt=media&token=2b73cfd7-53a9-4ec4-8fec-98ff8bc186b1",
+      "count": 1,
+      "id": 4
+    },
+    {
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=8a7c4895-acf8-4015-95c6-bfc317a5bf60",
+        "id": 2
+      },
+      "name": "Фелікс з лососем",
+      "path": "feliks-z-lososem",
+      "description": "Рис, крем сир, авокадо, салат айсберг, кунжут, лосось, спайсі соус",
+      "weight": 300,
+      "price": 302,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F5.-feliks-z-lososem.jpg?alt=media&token=b1f7f0d2-9018-4754-ba3b-76a6ef6ec2bb",
+      "count": null,
+      "id": 5
     }
   ]
 }

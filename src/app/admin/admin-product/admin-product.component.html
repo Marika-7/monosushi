@@ -1,5 +1,125 @@
 <div class="section-admin">
-    <button class="btn btn-white">
-        admin-product works!
+
+    <button class="btn btn-white" 
+        (click)="toggleOpenForm()">
+        {{ editStatus ? 'Редагувати' : 'Додати товар' }}
+        <!-- <span *ngIf="!editStatus">Додати товар</span>
+        <span *ngIf="editStatus">Редагувати</span> -->
     </button>
+
+    <div class="add" *ngIf="inputsIsOpen">
+
+        <form 
+            [formGroup]="productForm" 
+            (ngSubmit)="saveProduct()">
+            <div class="add__grid">
+                <select 
+                    class="add__input" 
+                    formControlName="category">
+                    <option 
+                        *ngFor="let category of adminCategories" 
+                        [ngValue]="category">
+                        {{ category.name }}
+                    </option>
+                </select>
+                <input type="text" placeholder="*Назва" 
+                    class="add__input" 
+                    formControlName="name">
+                <input type="text" placeholder="*Шлях" 
+                    class="add__input" 
+                    formControlName="path">
+                <input type="number" placeholder="*Вага"
+                    class="add__input"
+                    formControlName="weight">
+                <input type="number" placeholder="*Ціна"
+                    class="add__input"
+                    formControlName="price">
+                <textarea placeholder="*Опис" 
+                    class="add__input" 
+                    formControlName="description"></textarea>
+
+                <ng-container *ngIf="!isUploaded">
+                    <input type="file"
+                        class="add__input" 
+                        (change)="upload($event)">
+                    <progress [value]="imageService.uploadPercent" max="100" 
+                        class="add__progress"></progress>
+                </ng-container>
+                <ng-container *ngIf="isUploaded">
+                    <div class="add__inner">
+                        <img [src]="valueByControl('imagePath')"
+                            alt="valueByControl('name')" 
+                            class="add__img">
+                        <button class="add__img-del line" 
+                            type="button" 
+                            (click)="deleteImage()">
+                            Видалити
+                        </button>
+                    </div>
+                </ng-container>
+            </div>
+
+            <button class="add__btn btn btn-blue" 
+                type="submit" 
+                [disabled]="productForm.invalid">
+                Зберегти
+            </button>
+        </form>
+    </div>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th class="table__th">№</th>
+                <th class="table__th">Категорія</th>
+                <th class="table__th">Назва</th>
+                <th class="table__th">Шлях</th>
+                <th class="table__th">Вага</th>
+                <th class="table__th">Ціна</th>
+                <th class="table__th">Опис</th>
+                <th class="table__th">Картинка</th>
+                <th class="table__th">Дії</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let product of adminProducts">
+
+                <td class="table__td">{{ product.id }}</td>
+                <td class="table__td">{{ product.category.name }}</td>
+                <td class="table__td">{{ product.name }}</td>
+                <td class="table__td">{{ product.path }}</td>
+                <td class="table__td">{{ product.weight }}</td>
+                <td class="table__td">{{ product.price }}</td>
+                <td class="table__td">
+                    {{ product.description | slice:0:30 }}
+                    <span *ngIf="product.description.length > 30">...</span>
+                </td>
+
+                <td class="table__td">
+                    <img [src]="product.imagePath" 
+                        [alt]="product.name" 
+                        class="table__img">
+                </td>
+
+                <td class="table__td">
+                    <span class="table__for-btn">
+                        <button class="table__btn line" 
+                            (click)="editProduct(product)">
+                            Редагувати
+                        </button>
+                        <button class="table__btn line" 
+                            [disabled]="editStatus"
+                            (click)="deleteProduct(product)">
+                            Видалити
+                        </button>
+                    </span>
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+
 </div>

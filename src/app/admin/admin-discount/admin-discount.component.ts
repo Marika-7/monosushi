@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDiscountResponse } from 'src/app/shared/interfaces/discount/discount.interface';
 import { DiscountService } from 'src/app/shared/services/discount/discount.service';
-import { Storage, deleteObject, getDownloadURL, percentage, ref, uploadBytesResumable } from "@angular/fire/storage";
+import { ImageService } from 'src/app/shared/services/image/image.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-discount',
@@ -16,18 +17,19 @@ export class AdminDiscountComponent implements OnInit {
   private currentDiscountId = 0;
   public inputsIsOpen = false;
   public editStatus = false;
-  public uploadPercent = 0;
   public isUploaded = false;
 
   constructor(
-    private discountService: DiscountService,
     private fb: FormBuilder,
-    private storage: Storage
+    private discountService: DiscountService,
+    public imageService: ImageService,
+    private toastr: ToastrService
     ) {}
 
     ngOnInit(): void {
       this.loadDiscounts();
       this.initDiscountForm();
+      this.imageService.uploadPercent = 0;
     }
   
     loadDiscounts(): void {
@@ -46,7 +48,7 @@ export class AdminDiscountComponent implements OnInit {
       });
     }
   
-    openInputs(): void {
+    toggleOpenForm(): void {
       this.inputsIsOpen = !this.inputsIsOpen;
     }
   
@@ -55,18 +57,20 @@ export class AdminDiscountComponent implements OnInit {
         this.discountService.update(this.discountForm.value, this.currentDiscountId)
           .subscribe(() => {
             this.loadDiscounts();
+            this.toastr.success('Discount successfully updated');
           })
       } else {
         this.discountService.create(this.discountForm.value)
           .subscribe(() => {
             this.loadDiscounts();
+            this.toastr.success('Discount successfully created');
           })
       }
       this.inputsIsOpen = false;
       this.editStatus = false;
       this.discountForm.reset();
       this.isUploaded = false;
-      this.uploadPercent = 0;
+      this.imageService.uploadPercent = 0;
     }
   
     editDiscount(discount: IDiscountResponse): void {
@@ -86,12 +90,13 @@ export class AdminDiscountComponent implements OnInit {
       this.discountService.delete(discount.id)
         .subscribe(() => {
           this.loadDiscounts();
+          this.toastr.success('Discount successfully deleted');
         })
     }
   
     upload(event: any): void {
       const file = event.target.files[0];
-      this.uploadFile('images/discount', file.name, file)
+      this.imageService.uploadFile('images/discount', file.name, file)
         .then(data => {
           this.discountForm.patchValue({
             imagePath: data
@@ -103,39 +108,16 @@ export class AdminDiscountComponent implements OnInit {
         })
     }
   
-    async uploadFile(folder: string, name: string, file: File | null): Promise<string> {
-      const path = `${folder}/${name}`;
-      let url = '';
-      if (file) {
-        try {
-          const storageRef = ref(this.storage, path);
-          const task = uploadBytesResumable(storageRef, file);
-          percentage(task)
-            .subscribe(data => {
-              this.uploadPercent = data.progress;
-            });
-            await task;
-            url = await getDownloadURL(storageRef);
-        } catch(err: any) {
-          console.log(err);
-        }
-      } else {
-        console.log('wrong format');
-      }
-      return Promise.resolve(url);
-    }
-  
     deleteImage(): void {
-      const task = ref(this.storage, this.valueByControl('imagePath'));
-      deleteObject(task)
-        .then(() => {
-          console.log('File deleted');
-          this.isUploaded = false;
-          this.uploadPercent = 0;
-          this.discountForm.patchValue({
-            imagePath: null
-          });
-        })
+      this.imageService.deleteUploadFile(this.valueByControl('imagePath'))
+      .then(() => {
+        this.discountForm.patchValue({ imagePath: null });
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      this.isUploaded = false;
+      this.imageService.uploadPercent = 0;
     }
     
     valueByControl(control: string): string {

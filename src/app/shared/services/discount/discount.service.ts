@@ -16,7 +16,7 @@ export class DiscountService {
     private http: HttpClient
     ) { }
 
-    getAll():Observable<IDiscountResponse[]> {
+    getAll(): Observable<IDiscountResponse[]> {
       return this.http.get<IDiscountResponse[]>(this.api.discounts);
     }
   
