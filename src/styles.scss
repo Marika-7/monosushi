@@ -4,6 +4,15 @@
 @import './app/shared/styles/mixins';
 @import 'ngx-toastr/toastr';
 
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: $white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $color_main;
+}
+
 .container {
     margin: 60px auto 120px;
     font-family: 'RotondaC', sans-serif;
@@ -68,6 +77,10 @@
     }
 }
 
+.product .h1 {
+    display: none;
+}
+
 .h2 {
     margin-bottom: 25px;
     color: $text_bold;
@@ -94,6 +107,10 @@
     color: $text_bold;
     font-weight: bold;
     font-size: 20px;
+    text-transform: uppercase;
+    @include screen-400 {
+        font-size: 18px;
+    }
 }
 
 .h5 {

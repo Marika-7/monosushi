@@ -12,7 +12,7 @@
     }
 }
 
-.nav {
+.nav { 
     &__ul {
         border-bottom: 1px solid $border_gray;
     }
@@ -33,15 +33,16 @@
             color: $text_bold;
             font-weight: bold;
         }
-        &_active {
-            color: $text_bold;
-            font-weight: bold;
-            border-top: 4px solid $color_main;
-        }
     }
     &__btn {
         width: 100px;
         height: 60px;
         margin: 20px auto;
     }
+}
+
+.active {
+    color: $text_bold;
+    font-weight: bold;
+    border-top: 4px solid $color_main;
 }

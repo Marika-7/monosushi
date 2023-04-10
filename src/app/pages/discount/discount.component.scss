@@ -1,3 +1,54 @@
 @import '../../shared/styles/fonts';
 @import '../../shared/styles/variables';
 @import '../../shared/styles/mixins';
+
+.wrapper {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.block {
+    text-align: center;
+    &__for-img {
+        display: inline-block;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    &__img {
+        width: 35vw;
+        min-width: 330px;
+        transition: .35s;
+        @include screen-768 {
+            width: 70vw;
+            min-width: 300px;
+        }
+    }
+    .h4 {
+        margin: 20px 0 11px;
+    }
+    .hr {
+        width: 100%;
+        height: 3px;
+        margin: 15px 0;
+        background-color: $color_main;
+        border: none;
+        border-radius: 10px;
+    }
+    &__btn {
+        width: 257px;
+        height: 46px;
+        margin: 0 auto;
+        font-size: 14px;
+    }
+    :hover {
+        .block__img {
+            transform: scale(1.04);
+        }
+        .h4 {
+            color: $color_main;
+        }
+    }
+}

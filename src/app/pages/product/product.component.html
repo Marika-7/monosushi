@@ -1,3 +1,40 @@
 <div class="container">
-    <h1 class="h1">product works!</h1>
+    
+    <h1 class="h1">Роли</h1>
+
+    <div class="tab">
+        <button class="tab__btn active" (click)="openTab($event)">Всі</button>
+        <button class="tab__btn" (click)="openTab($event)">Філадельфія</button>
+        <button class="tab__btn" (click)="openTab($event)">Каліфорнія</button>
+        <button class="tab__btn" (click)="openTab($event)">Запечені</button>
+        <button class="tab__btn" (click)="openTab($event)">Фірмові</button>
+        <button class="tab__btn" (click)="openTab($event)">Преміум</button>
+        <button class="tab__btn" (click)="openTab($event)">Макі</button>
+    </div>
+
+    <section class="wrapper">
+        <div class="card border" *ngFor="let product of userProducts">
+            <!-- <span class="card__mark card__mark_new">New</span> -->
+            <div class="card__img-block">
+                <img [src]="product.imagePath" [alt]="product.name" class="card__img">
+            </div>
+            <div class="card__text-block">
+                <h4 class="h4">{{ product.name }}</h4>
+                <div class="card__row">
+                    <p class="card__description">{{ product.description }}</p>
+                    <span class="card__weight text-bold">{{ product.weight }} г</span>
+                </div>
+                <div class="card__row">
+                    <span class="card__price text-bold">{{ product.price }} грн</span>
+                    <div class="card__btn count">
+                        <button class="count__btn">-</button>
+                        <span class="text-bold">1</span>
+                        <button class="count__btn">+</button>
+                    </div>
+                    <button class="card__btn btn btn-blue">Замовити</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </div>

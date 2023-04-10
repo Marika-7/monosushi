@@ -1,3 +1,19 @@
 <div class="container">
+    
     <h1 class="h1">discount works!</h1>
+    <section class="wrapper">
+        <div class="block" *ngFor="let discount of userDiscounts">
+            <div>
+                <a href="#">
+                    <span class="block__for-img">
+                        <img [src]="discount.imagePath" alt="Discount" class="block__img">
+                    </span>
+                    <h4 class="h4">{{ discount.name }}</h4>
+                </a>
+            </div>
+            <hr class="hr">
+            <a href="#" class="block__btn btn btn-blue">Дізнатись більше</a>
+        </div>
+    </section>
+
 </div>

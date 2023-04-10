@@ -28,3 +28,8 @@
         @content;
     }
 }
+@mixin screen-400 {
+    @media screen and (max-width: 400px) {
+        @content;
+    }
+}
