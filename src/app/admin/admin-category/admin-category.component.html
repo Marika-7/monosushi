@@ -2,8 +2,7 @@
 
     <button class="btn btn-white" 
         (click)="toggleOpenForm()">
-        <span *ngIf="!editStatus">Додати категорію</span>
-        <span *ngIf="editStatus">Редагувати</span>
+        {{ editStatus ? 'Редагувати' : 'Додати категорію' }}
     </button>
 
     <div class="add" 

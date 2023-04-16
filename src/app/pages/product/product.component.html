@@ -1,8 +1,9 @@
 <div class="container">
     
-    <h1 class="h1">Роли</h1>
+    <h1 class="h1-line">{{ nameOfPage }}</h1>
 
-    <div class="tab">
+    <div class="tab" 
+        *ngIf="nameOfPage === 'Роли'">
         <button class="tab__btn active" (click)="openTab($event)">Всі</button>
         <button class="tab__btn" (click)="openTab($event)">Філадельфія</button>
         <button class="tab__btn" (click)="openTab($event)">Каліфорнія</button>
@@ -14,25 +15,41 @@
 
     <section class="wrapper">
         <div class="card border" *ngFor="let product of userProducts">
-            <!-- <span class="card__mark card__mark_new">New</span> -->
             <div class="card__img-block">
-                <img [src]="product.imagePath" [alt]="product.name" class="card__img">
+                <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+                    <img [src]="product.imagePath" [alt]="product.name" class="card__img">
+                </a>
             </div>
             <div class="card__text-block">
-                <h4 class="h4">{{ product.name }}</h4>
+                <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+                    <h4 class="h4">{{ product.name }}</h4>
+                </a>
                 <div class="card__row">
                     <p class="card__description">{{ product.description }}</p>
-                    <span class="card__weight text-bold">{{ product.weight }} г</span>
+                    <span class="card__weight">{{ product.weight }}</span>
                 </div>
+
                 <div class="card__row">
-                    <span class="card__price text-bold">{{ product.price }} грн</span>
+                    <span class="card__price">
+                        <b class="b">{{ product.price * product.count }}</b>
+                         грн
+                    </span>
                     <div class="card__btn count">
-                        <button class="count__btn">-</button>
-                        <span class="text-bold">1</span>
-                        <button class="count__btn">+</button>
+                        <button class="count__btn" 
+                            (click)="productCount(product, false)">
+                            -
+                        </button>
+                        <input type="text" class="count__input" 
+                            [value]="product.count" readonly>
+                        <button class="count__btn" 
+                            (click)="productCount(product, true)">
+                            +
+                        </button>
                     </div>
-                    <button class="card__btn btn btn-blue">Замовити</button>
+                    <button class="card__btn btn btn-blue"
+                        (click)="addToBasket(product)">Замовити</button>
                 </div>
+                
             </div>
         </div>
     </section>

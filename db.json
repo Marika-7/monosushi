@@ -32,7 +32,7 @@
       "name": "Фотомарафон",
       "header": "Фотомарафон",
       "description": "Розіграш проводиться в соціальній мережі – Instagram.\nЩоб стати учасником розіграшу варто зробити будь-який контент на задану тему з нашими ролами. Це може бути фото, відео, tik-tok.\nОбов’язково позначай нас на пості або сторі, щоб стати учасником марафону. ( інакше ми вас не побачимо )\nМарафон діє на постійній основі.\nПереможці визначаються два рази на місяць.\nПерше місце-Запечений сирний з лососем.\nДруге місце-Філадельфія з лососем.\nТретє місце-Запечені моно макі з креветкою.\nДеталі актуального марафону уточнюйте в нашому Instagram: @monosushi.com.ua",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fdiscount%2Fdiscount_5.jpg?alt=media&token=aabf8932-8127-48ce-9392-db3cf2f1c2af",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fdiscount%2Fdiscount_5.jpg?alt=media&token=b133ea63-fb96-4c57-b7d0-e0266af5381d",
       "id": 5
     }
   ],
@@ -66,12 +66,6 @@
       "path": "sauses",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-sauses.svg?alt=media&token=b7c0ed26-0acd-43d3-b9e3-266c2c4b885b",
       "id": 5
-    },
-    {
-      "name": "hjghj",
-      "path": "fghfgh",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-gift.svg?alt=media&token=dda5b478-118f-4f93-806f-285d5925b4c3",
-      "id": 6
     }
   ],
   "products": [
@@ -85,10 +79,10 @@
       "name": "Філадельфія з лососем",
       "path": "filadelfiya-z-lososem",
       "description": "Риc, крем сир, огірок, лосось",
-      "weight": 280,
+      "weight": "280 г",
       "price": 267,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=1b95a1a5-7241-4b16-8f14-4cc14b3ae101",
-      "count": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Ffiladelfiya-z-lososem.jpg?alt=media&token=5cf6aaea-a4d8-4207-aa00-14a2f4a6e106",
+      "count": 1,
       "id": 1
     },
     {
@@ -101,9 +95,9 @@
       "name": "Каліфорнія з крабом",
       "path": "kaliforniya-z-krabom",
       "description": "Рис, спайсі соус, авокадо, огірок, краб, кунжут",
-      "weight": 250,
+      "weight": "250 г",
       "price": 243,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F3.1-kaliforniya-z-krabom-v-kunzhuti.jpg?alt=media&token=3fe3d96d-1ce9-4761-85ff-466314f553a9",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fkaliforniya-z-krabom-v-kunzhuti.jpg?alt=media&token=dff36361-689c-4ae4-a9cc-c885542ff98c",
       "count": 1,
       "id": 2
     },
@@ -117,10 +111,10 @@
       "name": "Запечений сирний з креветкою",
       "path": "zapechenyj-syrnyj-z-krevetkoyu",
       "description": "Рис, крем сир, салат айсберг, креветка, кунжут, сирний соус, унагі соус",
-      "weight": 330,
+      "weight": "330 г",
       "price": 324,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F2.-zapechenyj-syrnyj-z-los.jpg?alt=media&token=82556d34-e68a-463c-af17-8bb239635e03",
-      "count": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fzapechenyj-syrnyj-z-lososem.jpg?alt=media&token=baa9dae6-d048-4df4-92b5-7d052864cc95",
+      "count": 1,
       "id": 3
     },
     {
@@ -133,9 +127,9 @@
       "name": "Вегетаріанський з чукою",
       "path": "vegetarianskyj-z-chukoyu",
       "description": "Рис, крем сир, авокадо, айсберг, кунжут, чука, горіховий соус, мигдаль",
-      "weight": 300,
+      "weight": "300 г",
       "price": 229,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F6.-vegetarianskyj-z-chukoyu.jpg?alt=media&token=2b73cfd7-53a9-4ec4-8fec-98ff8bc186b1",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fvegetarianskyj-z-chukoyu.jpg?alt=media&token=c716058a-545b-4441-90e6-1a86bf21775e",
       "count": 1,
       "id": 4
     },
@@ -149,11 +143,123 @@
       "name": "Фелікс з лососем",
       "path": "feliks-z-lososem",
       "description": "Рис, крем сир, авокадо, салат айсберг, кунжут, лосось, спайсі соус",
-      "weight": 300,
+      "weight": "300 г",
       "price": 302,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2F5.-feliks-z-lososem.jpg?alt=media&token=b1f7f0d2-9018-4754-ba3b-76a6ef6ec2bb",
-      "count": null,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Ffeliks-z-lososem.jpg?alt=media&token=a5724d9c-e896-44b8-8ba1-2554148665a4",
+      "count": 1,
       "id": 5
+    },
+    {
+      "category": {
+        "name": "Сети",
+        "path": "sets",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-sets.svg?alt=media&token=75f1edde-e385-4391-b183-3adde792c5c9",
+        "id": 3
+      },
+      "name": "Сет Філадельфія",
+      "path": "set-filadelfiya",
+      "description": "Філадельфія: з лососем / в кунжуті / з тунцем / з вугрем",
+      "weight": "1070 г",
+      "price": 1075,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fset-filadelfiya.jpg?alt=media&token=4ce912d7-7814-45c0-93da-377d41dd0460",
+      "count": 1,
+      "id": 6
+    },
+    {
+      "category": {
+        "name": "Сети",
+        "path": "sets",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-sets.svg?alt=media&token=75f1edde-e385-4391-b183-3adde792c5c9",
+        "id": 3
+      },
+      "name": "Сет Макі",
+      "path": "set-maki",
+      "description": "Макі: з авокадо / з лососем / з огірком / з вугрем",
+      "weight": "480 г",
+      "price": 597,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fset-maki.jpg?alt=media&token=34b93a0d-a739-4dc4-bae7-5f2fe5729767",
+      "count": 1,
+      "id": 7
+    },
+    {
+      "category": {
+        "name": "Соуси",
+        "path": "sauses",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-sauses.svg?alt=media&token=b7c0ed26-0acd-43d3-b9e3-266c2c4b885b",
+        "id": 5
+      },
+      "name": "Імбир",
+      "path": "imbyr",
+      "description": " ",
+      "weight": "30 г",
+      "price": 12,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fimbyr.png?alt=media&token=dd883d0c-282e-4066-a475-b2fca7e3655e",
+      "count": 1,
+      "id": 8
+    },
+    {
+      "category": {
+        "name": "Соуси",
+        "path": "sauses",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-sauses.svg?alt=media&token=b7c0ed26-0acd-43d3-b9e3-266c2c4b885b",
+        "id": 5
+      },
+      "name": "Васабі",
+      "path": "vasabi",
+      "description": " ",
+      "weight": "25 г",
+      "price": 12,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fvasabi.png?alt=media&token=13d2bfc6-295c-493e-ab49-2d4cdba1842a",
+      "count": 1,
+      "id": 9
+    },
+    {
+      "category": {
+        "name": "Соуси",
+        "path": "sauses",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-sauses.svg?alt=media&token=b7c0ed26-0acd-43d3-b9e3-266c2c4b885b",
+        "id": 5
+      },
+      "name": "Соєвий соус",
+      "path": "soyevyj-sous",
+      "description": " ",
+      "weight": "150 мл",
+      "price": 24,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fsoyevyj-sous.jpg?alt=media&token=2fe72d21-4992-412c-9bea-99ead40bb53c",
+      "count": 1,
+      "id": 10
+    },
+    {
+      "category": {
+        "name": "Напої",
+        "path": "drinks",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-drinks.svg?alt=media&token=a60ce294-f85e-4d86-8401-56ae52cc34cd",
+        "id": 4
+      },
+      "name": "Pepsi",
+      "path": "pepsicola",
+      "description": " ",
+      "weight": "0.33 л",
+      "price": 35,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Fpepsi.jpg?alt=media&token=e8a6fee2-7bce-4e11-baf1-f47e52bf2aae",
+      "count": 1,
+      "id": 11
+    },
+    {
+      "category": {
+        "name": "Напої",
+        "path": "drinks",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fcategory%2Fnav-img-drinks.svg?alt=media&token=a60ce294-f85e-4d86-8401-56ae52cc34cd",
+        "id": 4
+      },
+      "name": "Fanta апельсин",
+      "path": "fanta-apelsyn",
+      "description": " ",
+      "weight": "0.33 л",
+      "price": 31,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-a36be.appspot.com/o/images%2Fproduct%2Ffanta.jpg?alt=media&token=6971e715-b58b-4f9e-9269-b9a37e34db57",
+      "count": 1,
+      "id": 12
     }
   ]
 }

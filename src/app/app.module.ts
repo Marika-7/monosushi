@@ -16,7 +16,9 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { HomeComponent } from './pages/home/home.component';
 import { DiscountComponent } from './pages/discount/discount.component';
+import { DiscountInfoComponent } from './pages/discount-info/discount-info.component';
 import { ProductComponent } from './pages/product/product.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutComponent } from './pages/about/about.component';
 
@@ -48,7 +50,9 @@ import { ToastrModule } from 'ngx-toastr';
     AdminDiscountComponent,
     AdminCategoryComponent,
     AdminProductComponent,
-    AdminOrderComponent
+    AdminOrderComponent,
+    ProductInfoComponent,
+    DiscountInfoComponent
   ],
   imports: [
     BrowserModule,

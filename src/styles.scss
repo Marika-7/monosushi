@@ -49,6 +49,29 @@
     }
 }
 
+.breadcrumbs {
+    width: 100%;
+    // margin-top: 20px;
+    margin: 20px 0;
+    padding-left: 8vw;
+    font-size: 12px;
+    &__link {
+        cursor: pointer;
+        &:hover {
+            color: $text_bold;
+        }
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            margin: 0 12px 2px;
+            background-color: $text_normal;
+            border-radius: 50%;
+        }
+    }
+}
+
 .h1 {
     margin-bottom: 60px;
     padding-top: 10px;
@@ -65,6 +88,10 @@
         margin-bottom: 30px;
         font-size: 34px;
     }
+}
+
+.h1-line {
+    @extend .h1;
     &::before {
         content: '';
         width: 100%;
@@ -276,5 +303,44 @@
     border-radius: 10px;
     @include screen-1200 {
         border: none;
+    }
+}
+
+.count {
+    padding: 4px;
+    border: 1px solid $border_gray;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__btn {
+        width: 33%;
+        height: 36px;
+        padding-bottom: 5px;
+        background-color: transparent;
+        border: none;
+        border-radius: 8px;
+        color: $text_normal;
+        cursor: pointer;
+        &:nth-of-type(1) {
+            font-size: 30px;
+        }
+        &:nth-of-type(2) {
+            font-size: 24px;
+            font-weight: normal;
+        }
+        &:hover {
+            background-color: $color_main;
+        }
+    }
+    &__input {
+        width: 33%;
+        height: 36px;
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+        color: $text-bold;
     }
 }

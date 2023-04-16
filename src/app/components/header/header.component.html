@@ -38,10 +38,8 @@
         </div>
     </div>
 
-    <div class="mobile" 
-        *ngIf="screenIs1200" 
-        [ngClass]="{'mobile-show': burgerIsOpen}">
-    <div class="mobile__menu text-bold">
+    <div class="mobile text-bold" 
+        *ngIf="screenIs1200 && burgerIsOpen">
         <a [routerLink]="[ '/product/sauses' ]" 
             class="mobile__link mobile__link_sauses">
             <img src="../../../assets/images/nav-img-sauses.svg" alt="Соуси">
@@ -67,24 +65,23 @@
             </button>
         </div>
     </div>
-</div>
 
     <div class="callback" 
         *ngIf="!screenIs1200">
-    <button class="callback__btn btn btn-blue">
-        <img src="../../../assets/images/phone.svg" alt="Callback">
-            <span class="callback__span">Ми зателефонуємо</span>
-    </button>
-</div>
+        <button class="callback__btn btn btn-blue">
+            <img src="../../../assets/images/phone.svg" alt="Callback">
+                <span class="callback__span">Ми зателефонуємо</span>
+        </button>
+    </div>
 
-<div class="info">
-    <a href="tel:0978780837" class="info__link">
-        <span class="info__tel link-hover text-bold">(097) 878 08 37</span>
-        <img src="../../../assets/images/phone.svg" alt="Call" 
-            class="info__img">
-    </a>
-    <p class="info__work text-normal">Працюємо з <b>11:00</b> до <b>22:30</b></p>
-</div>
+    <div class="info">
+        <a href="tel:0978780837" class="info__link">
+            <span class="info__tel link-hover text-bold">(097) 878 08 37</span>
+            <img src="../../../assets/images/phone.svg" alt="Call" 
+                class="info__img">
+        </a>
+        <p class="info__work text-normal">Працюємо з <b>11:00</b> до <b>22:30</b></p>
+    </div>
 
     <div class="user border">
         <!-- <button class="user__btn">
@@ -95,16 +92,76 @@
         </a>
     </div>
 
-    <div class="basket">
+    <button class="basket" 
+        (click)="toggleBasket()">
         <span class="basket__combo">
             <img src="../../../assets/images/basket.svg" alt="Кошик" 
                 class="basket__img">
-            <span class="basket__number">0</span>
+            <span class="basket__number">{{ totalCount }}</span>
         </span>
         <span class="basket__uah">
-            <span class="text-bold">0</span>
+            <span class="text-bold">{{ totalPrice }}</span>
             грн
         </span>
+
+        <div class="order" 
+            *ngIf="basketIsOpen">
+            <table class="order__table">
+                <tr *ngFor="let product of basket">
+                    <td class="order__td">
+                        <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+                            <img [src]="product.imagePath" alt="product.name" class="order__img">
+                        </a>
+                    </td>
+
+                    <td class="order__td">
+                        <a [routerLink]="[ '/product/'+product.category.path, product.id ]" 
+                            class="order__link">
+                            {{ product.name }}
+                        </a>
+                    </td>
+
+                    <td class="order__td">
+                        <div class="count">
+                            <button class="count__btn" 
+                                (click)="productCount(product, false)">
+                                -
+                            </button>
+                            <input type="text" class="count__input" 
+                                [value]="product.count" readonly>
+                            <button class="count__btn" 
+                                (click)="productCount(product, true)">
+                                +
+                            </button>
+                        </div>
+                    </td>
+
+                    <td class="order__td">
+                        <span class="order__price">
+                            <b class="b">{{ product.price * product.count }}</b>
+                            грн
+                        </span>
+                    </td>
+
+                    <td class="order__td">
+                        <button class="order__del">
+                            <img src="../../../assets/images/trash.svg" alt="Видалити">
+                        </button>
+                    </td>
+
+                </tr>
+            </table>
+
+            <footer class="order__footer">
+                <span class="order__sum">Сума: <b class="b">{{ totalPrice }}</b> грн</span>
+                <button class="order__btn btn btn_white">Оформити замовлення</button>
+            </footer>
+        </div>
+
+    </button>
+
+    <div class="overlay"
+        *ngIf="basketIsOpen || (screenIs1200 && burgerIsOpen)">
     </div>
 
 </header>

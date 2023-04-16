@@ -23,7 +23,7 @@ export class DiscountComponent implements OnInit {
     this.discountService.getAll()
       .subscribe(data => {
         this.userDiscounts = data;
-      })
+      });
   }
 
 }

@@ -1,0 +1,51 @@
+<div class="container">
+    <nav class="breadcrumbs">
+        <a [routerLink]="[ '' ]" class="breadcrumbs__link">Головна</a>
+        <a [routerLink]="[ '/product/'+currentProduct.category.path ]" 
+            class="breadcrumbs__link">
+            {{ currentProduct.category.name }}
+        </a>
+        <span>{{ currentProduct.name }}</span>
+    </nav>
+
+    <section class="wrapper">
+        <div class="card">
+            <div class="card__block-img">
+                <img [src]="currentProduct.imagePath" alt="currentProduct.name" class="card__img">
+            </div>
+            <div class="card__block-info">
+                <h1 class="h1">{{ currentProduct.name }}</h1>
+                <p class="card__p" *ngIf="currentProduct.description !== ' '">
+                    <span class="card__span">Склад:</span>
+                    {{ currentProduct.description }}
+                </p>
+                <p class="card__p">
+                    <span class="card__span">Вага:</span>
+                    {{ currentProduct.weight }}
+                </p>
+
+                <div class="card__row">
+                    <span class="card__price">
+                        <b class="b">{{ currentProduct.price * currentProduct.count }}</b>
+                        грн
+                    </span>
+                    <div class="card__btn count">
+                        <button class="count__btn" 
+                            (click)="productCount(currentProduct, false)">
+                            -
+                        </button>
+                        <input type="text" class="count__input" 
+                            [value]="currentProduct.count" readonly>
+                        <button class="count__btn" 
+                            (click)="productCount(currentProduct, true)">
+                            +
+                        </button>
+                    </div>
+                    <button class="card__btn btn btn-blue" 
+                        (click)="addToBasket(currentProduct)">Замовити</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

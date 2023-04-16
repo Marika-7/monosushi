@@ -36,7 +36,7 @@ export class AdminCategoryComponent implements OnInit {
     this.categoryService.getAll()
       .subscribe(data => {
       this.adminCategories = data;
-    })
+    });
   }
 
   initCategoryForm(): void {

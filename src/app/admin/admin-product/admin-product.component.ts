@@ -44,7 +44,7 @@ export class AdminProductComponent implements OnInit {
       this.productForm.patchValue({
         category: this.adminCategories[0].id
       })
-    })
+    });
   }
 
   loadProducts(): void {

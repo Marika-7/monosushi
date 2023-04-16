@@ -63,14 +63,14 @@
     margin-top: 40px;
     &__th {
         height: 50px;
-        padding: 0 10px;
+        padding-right: 10px;
         font-weight: normal;
         text-align: left;
         border-bottom: 2px solid $color_main;
     }
     &__td {
         height: 80px;
-        padding: 0 10px;
+        padding-right: 10px;
         border-bottom: 2px solid $border_gray;
         text-align: left;
     }

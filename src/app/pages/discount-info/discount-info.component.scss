@@ -1,0 +1,57 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.container {
+    margin-top: 0;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 0;
+    padding: 15px;
+}
+
+.inner {
+    width: 100%;
+    height: 180px;
+    margin-top: 40px;
+    background-color: $color_main;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1-line {
+    margin: 0;
+    color: $text_bold;
+    &::before {
+        background-color: $text_bold;
+    }
+}
+
+.ul {
+    margin-top: 25px;
+}
+
+li {
+    position: relative;
+    padding: 0 25px;
+    font-size: 18px;
+    line-height: 1.8em;
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        background-color: $color_main;
+        border-radius: 50%;
+        position: absolute;
+        top: 15px;
+        left: 4px;
+        outline: 1px solid $color_main;
+        outline-offset: 2px;
+    }
+}

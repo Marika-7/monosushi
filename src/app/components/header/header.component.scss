@@ -115,36 +115,22 @@
 }
 
 .mobile {
-    width: 0;
+    width: 50%;
+    min-width: 300px;
     height: calc(100vh - 120px);
-    background-color: $color_overlay;
+    padding: 10px 20px;
+    background-color: white;
+    border-top: 1px solid $border-gray;
     font-size: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transition: width .35s;
     position: absolute;
     top: 60px;
     right: 0;
-    opacity: 0;
-    transition: opacity .35s;
-    &__menu {
-        width: 0px;
-        height: 100%;
-        padding: 10px 20px;
-        background-color: white;
-        border-top: 1px solid $border-gray;
-        position: absolute;
-        right: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        transition: width .35s;
-    }
-    &-show {
-        width: 100vw;
-        opacity: 1;
-    }
-    &-show &__menu {
-        width: 50%;
-        min-width: 300px;
-    }
+    z-index: 11;
     &__link {
         &_sauses {
             display: flex;
@@ -297,5 +283,118 @@
         @include screen-768 {
             font-size: 14px;
         }
+    }
+}
+
+.order {
+    width: 665px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    top: 110px;
+    right: 0;
+    z-index: 11;
+    @include screen-1600 {
+        top: 95px;
+    }
+    @include screen-1200 {
+        top: 60px;
+    }
+    @include screen-768 {
+        width: 100%;
+    }
+    &__table {
+        display: block;
+        width: 100%;
+        max-height: calc(100vh - (110px + 95px));
+        background-color: $white;
+        overflow: scroll;
+        @include screen-1600 {
+            max-height: calc(100vh - (95px + 95px));
+        }
+        @include screen-1200 {
+            max-height: calc(100vh - (60px + 95px));
+        }
+    }
+    &__td {
+        height: 110px;
+        padding: 10px 20px;
+        border-top: 1px solid $border-gray;
+    }
+    &__img {
+        max-width: 120px;
+        max-height: 90px;
+    }
+    &__link {
+        font-weight: bold;
+        &:hover {
+            color: $color_main;
+        }
+    }
+    &__price {
+        white-space: nowrap;
+        color: $text_normal;
+    }
+    &__del {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        img {
+            width: 20px;
+        }
+    }
+    &__footer {
+        height: 95px;
+        padding: 20px;
+        background-color: $color_main;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__sum {
+        font-size: 18px;
+        .b {
+            font-size: 24px;
+        }
+    }
+    &__btn {
+        padding: 16px 22px;
+        border: 2px solid $white;
+    }
+}
+
+.count {
+    width: 110px;
+    height: 46px;
+    border-radius: 10px;
+    font-size: 14px;
+    @include screen-1600 {
+        width: 90px;
+        font-size: 12px;
+    }
+    @include screen-768 {
+        height: 36px;
+    }
+    @include screen-400 {
+        width: 80px;
+    }
+}
+
+.overlay {
+    width: 100vw;
+    height: calc(100vh - 110px);
+    background-color: $color_overlay;
+    backdrop-filter: blur(2px);
+    position: absolute;
+    top: 110px;
+    z-index: 10;
+    @include screen-1600 {
+        top: 95px;
+        height: calc(100vh - 95px);
+    }
+    @include screen-1200 {
+        top: 60px;
+        height: calc(100vh - 120px);
     }
 }

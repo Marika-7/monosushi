@@ -1,10 +1,10 @@
 <div class="container">
     
-    <h1 class="h1">discount works!</h1>
+    <h1 class="h1-line">Акції</h1>
     <section class="wrapper">
         <div class="block" *ngFor="let discount of userDiscounts">
             <div>
-                <a href="#">
+                <a [routerLink]="[ '/discount', discount.id ]">
                     <span class="block__for-img">
                         <img [src]="discount.imagePath" alt="Discount" class="block__img">
                     </span>
@@ -12,7 +12,8 @@
                 </a>
             </div>
             <hr class="hr">
-            <a href="#" class="block__btn btn btn-blue">Дізнатись більше</a>
+            <a [routerLink]="[ '/discount', discount.id ]" 
+                class="block__btn btn btn-blue">Дізнатись більше</a>
         </div>
     </section>
 

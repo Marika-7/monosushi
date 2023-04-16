@@ -36,7 +36,7 @@ export class AdminDiscountComponent implements OnInit {
       this.discountService.getAll()
         .subscribe(data => {
           this.adminDiscounts = data;
-        })
+        });
     }
   
     initDiscountForm(): void {
