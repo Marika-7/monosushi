@@ -3,6 +3,8 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { clickOutsideDirective } from "src/app/shared/directives/click-outside.directive";
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { ROLE } from 'src/app/shared/constants/role.constant';
+import { AccountService } from 'src/app/shared/services/account/account.service';
 
 @Component({
   selector: 'app-header',
@@ -17,10 +19,12 @@ export class HeaderComponent implements OnInit {
   public screenIs1200 = false;
   public burgerIsOpen = false;
   public basketIsOpen = false;
+  public loginUrl = '';
 
   constructor(
     public breakpoinObserver: BreakpointObserver,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private accountService: AccountService
     ) {}
 
   ngOnInit(): void {
@@ -35,6 +39,8 @@ export class HeaderComponent implements OnInit {
       });
     this.loadBasket();
     this.updateBasket();
+    this.checkUserLogin();
+    this.checkUpdatesUserLogin();
   }
 
   toggleBurgerMenu(): void {
@@ -47,6 +53,7 @@ export class HeaderComponent implements OnInit {
 
   toggleBasket(): void {
     this.basketIsOpen = !this.basketIsOpen;
+    console.log('toggle');
   }
 
   loadBasket(): void {
@@ -77,6 +84,23 @@ export class HeaderComponent implements OnInit {
     } else if (!value && product.count > 1) {
       --product.count;
     }
+  }
+
+  checkUserLogin(): void {
+    const currentUser = JSON.parse(localStorage.getItem('monosushi_currentUser') as string);
+    if (currentUser && currentUser.role === ROLE.ADMIN) {
+      this.loginUrl = 'admin';
+    } else if (currentUser && currentUser.role === ROLE.USER) {
+      this.loginUrl = 'cabinet';
+    } else {
+      this.loginUrl = 'auth';
+    }
+  }
+
+  checkUpdatesUserLogin(): void {
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkUserLogin();
+    })
   }
 
 }

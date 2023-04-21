@@ -309,7 +309,7 @@
         width: 100%;
         max-height: calc(100vh - (110px + 95px));
         background-color: $white;
-        overflow: scroll;
+        overflow-y: scroll;
         @include screen-1600 {
             max-height: calc(100vh - (95px + 95px));
         }
@@ -325,6 +325,9 @@
     &__img {
         max-width: 120px;
         max-height: 90px;
+        @include screen-600 {
+            max-width: 60px;
+        }
     }
     &__link {
         font-weight: bold;

@@ -23,4 +23,8 @@
         min-height: calc(100vh - 263px);
         padding-top: 60px;
     }
+    @include screen-768 {
+        min-height: calc(100vh - (404px + 60px));
+        padding-top: 60px;
+    }
 }

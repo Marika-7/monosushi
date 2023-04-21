@@ -84,11 +84,8 @@
     </div>
 
     <div class="user border">
-        <!-- <button class="user__btn">
-            <img src="../../../assets/images/user.svg" alt="User">
-        </button> -->
-        <a [routerLink]="[ '/admin']" class="user__btn">
-            <img src="../../../assets/images/user.svg" alt="User">
+        <a [routerLink]="[ '/'+loginUrl ]" class="user__btn">
+            <img src="../../../assets/images/user.svg" [alt]="loginUrl" [title]="loginUrl">
         </a>
     </div>
 
@@ -104,7 +101,11 @@
             грн
         </span>
 
-        <div class="order" 
+        
+
+    </button>
+
+    <div class="order" 
             *ngIf="basketIsOpen">
             <table class="order__table">
                 <tr *ngFor="let product of basket">
@@ -157,8 +158,6 @@
                 <button class="order__btn btn btn_white">Оформити замовлення</button>
             </footer>
         </div>
-
-    </button>
 
     <div class="overlay"
         *ngIf="basketIsOpen || (screenIs1200 && burgerIsOpen)">

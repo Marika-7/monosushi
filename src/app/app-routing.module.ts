@@ -8,6 +8,8 @@ import { ProductComponent } from './pages/product/product.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutComponent } from './pages/about/about.component';
+import { AutorizationComponent } from './pages/autorization/autorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
@@ -17,6 +19,7 @@ import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 
 import { DiscountInfoResolver } from './shared/services/discount/discount-info.resolver';
 import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
+import { AuthGuard } from './shared/guards/auth/auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -30,7 +33,9 @@ const routes: Routes = [
   } },
   {path: 'delivery', component: DeliveryComponent },
   {path: 'about', component: AboutComponent },
-  {path: 'admin', component: AdminComponent, children: [
+  {path: 'auth', component: AutorizationComponent },
+  {path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard] },
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
     {path: 'discount', component: AdminDiscountComponent },
     {path: 'category', component: AdminCategoryComponent },
     {path: 'product', component: AdminProductComponent },

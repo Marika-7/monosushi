@@ -31,11 +31,10 @@
                 </a>
             </li>
         </ul>
-        <!-- <button class="nav__btn btn btn-blue">Вихід</button> -->
-        <a [routerLink]="[ '/' ]" 
-            class="nav__btn btn btn-blue">
+        <button class="nav__btn btn btn-blue" 
+            (click)="logout()">
             Вихід
-        </a>
+        </button>
     </nav>
 
     <div class="admin__section">
