@@ -5,6 +5,8 @@ import { IProductResponse } from 'src/app/shared/interfaces/product/product.inte
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -19,12 +21,14 @@ export class HeaderComponent implements OnInit {
   public screenIs1200 = false;
   public burgerIsOpen = false;
   public basketIsOpen = false;
+  public basketIsEmpty = true;
   public loginUrl = '';
 
   constructor(
     public breakpoinObserver: BreakpointObserver,
     private orderService: OrderService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    public dialog: MatDialog
     ) {}
 
   ngOnInit(): void {
@@ -53,12 +57,14 @@ export class HeaderComponent implements OnInit {
 
   toggleBasket(): void {
     this.basketIsOpen = !this.basketIsOpen;
-    console.log('toggle');
   }
 
   loadBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('monosushi_basket')) {
       this.basket = JSON.parse(localStorage.getItem('monosushi_basket') as string);
+      this.basketIsEmpty = false;
+    } else {
+      this.basketIsEmpty = true;
     }
     this.getTotalPrice();
   }
@@ -100,6 +106,14 @@ export class HeaderComponent implements OnInit {
   checkUpdatesUserLogin(): void {
     this.accountService.isUserLogin$.subscribe(() => {
       this.checkUserLogin();
+    })
+  }
+
+  openLoginDialog():void {
+    this.dialog.open(AuthDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
     })
   }
 

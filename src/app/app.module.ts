@@ -12,6 +12,7 @@ import { clickOutsideDirective } from './shared/directives/click-outside.directi
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { HomeComponent } from './pages/home/home.component';
@@ -21,6 +22,8 @@ import { ProductComponent } from './pages/product/product.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutComponent } from './pages/about/about.component';
+import { AutorizationComponent } from './pages/autorization/autorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
@@ -31,10 +34,11 @@ import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 import { ToastrModule } from 'ngx-toastr';
-import { AutorizationComponent } from './pages/autorization/autorization.component';
-import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { SharedModule } from './shared/styles/shared.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,8 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
     ProductInfoComponent,
     DiscountInfoComponent,
     AutorizationComponent,
-    CabinetComponent
+    CabinetComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +72,10 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
     LayoutModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
-    ToastrModule.forRoot()
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    ToastrModule.forRoot(),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

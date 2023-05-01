@@ -1,9 +1,79 @@
-<div class="container">
-    <h1 class="h1-line">Кабінет</h1>
-    <section class="section">
-        <button class="btn btn-blue" 
+<div class="cabinet">
+
+    <nav class="nav">
+        <ul class="nav__ul">
+            <li>
+                <button type="button" class="nav__link" 
+                    [ngClass]="{'active': isPerson}"
+                    (click)="showPerson()">
+                    Особисті дані
+                </button>
+            </li>
+            <li>
+                <button type="button" class="nav__link" 
+                    [ngClass]="{'active': !isPerson}"
+                    (click)="showOrders()">
+                    Історія замовлень
+                </button>
+            </li>
+        </ul>
+        <button class="nav__btn btn btn-blue" 
             (click)="logout()">
             Вихід
         </button>
-    </section>
+    </nav>
+
+    <div class="wrapper">
+        <section class="person" 
+            *ngIf="isPerson">
+
+            <div class="person__block">
+                <h5 class="h5">
+                    <span class="h5__span">1</span>
+                    Особисті дані
+                </h5>
+
+                <form class="person__form" 
+                    [formGroup]="personForm">
+                    <input type="text" placeholder="*Ваше ім'я" 
+                        class="person__input" 
+                        formControlName="firstName">
+
+                    <input type="text" placeholder="*Ваше прізвище" 
+                        class="person__input" 
+                        formControlName="lastName">
+
+                    <input type="text" placeholder="*Ваш телефон" 
+                            class="person__input" 
+                            formControlName="phoneNumber">
+
+                    <input type="text" placeholder="*Ваш email" 
+                        class="person__input" 
+                        formControlName="email">
+                </form>
+            </div>
+
+            <div class="person__block">
+                <h5 class="h5">
+                    <span class="h5__span">2</span>
+                    Адреси
+                </h5>
+                <div class="person__row">
+                    <button type="button" 
+                        class="btn btn-white person__btn">
+                        Додати адресу
+                    </button>
+                    <button type="button" 
+                        class="btn btn-blue person__btn">
+                        Зберегти зміни
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="orders" 
+            *ngIf="!isPerson">
+            <h5 class="h5">Історія замовлень</h5>
+        </section>
+    </div>
 </div>

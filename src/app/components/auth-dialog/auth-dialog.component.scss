@@ -1,0 +1,77 @@
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/variables';
+
+.auth {
+    width: 600px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    @include screen-768 {
+        width: 100%;
+    }
+    &__close {
+        width: 24px;
+        height: 24px;
+        align-self: end;
+    }
+    &__wrapper {
+        margin: 15px 40px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        @include screen-768 {
+            margin: 10px 20px 20px;
+        }
+    }
+    &__form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    h5 {
+        font-size: 24px;
+    }
+    &__row {
+        width: 100%;
+        display: flex;
+        gap: 15px;
+    }
+    &__input {
+        width: 100%;
+        font-family: 'RotondaC', sans-serif;
+    }
+    &__label {
+        font-size: 14px;
+        font-family: 'RotondaC', sans-serif;
+    }
+    &__btn {
+        width: 100%;
+        height: 56px;
+        border-radius: 10px;
+        border: 2px solid $color_main;
+        font-family: 'RotondaC', sans-serif;
+        font-size: 15px;
+        font-weight: bold;
+        color: $text_bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        &:hover {
+            background-color: transparent;
+        }
+    }
+    &__link {
+        margin-top: 20px;
+        font-family: 'RotondaC', sans-serif;
+        font-weight: bold;
+        font-size: 14px;
+        color: $text_bold;
+    }
+    .text-normal {
+        font-size: 15px;
+    }
+}

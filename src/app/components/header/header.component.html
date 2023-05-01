@@ -84,9 +84,9 @@
     </div>
 
     <div class="user border">
-        <a [routerLink]="[ '/'+loginUrl ]" class="user__btn">
+        <button (click)="openLoginDialog()" class="user__btn">
             <img src="../../../assets/images/user.svg" [alt]="loginUrl" [title]="loginUrl">
-        </a>
+        </button>
     </div>
 
     <button class="basket" 
@@ -107,51 +107,59 @@
 
     <div class="order" 
             *ngIf="basketIsOpen">
-            <table class="order__table">
-                <tr *ngFor="let product of basket">
-                    <td class="order__td">
-                        <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
-                            <img [src]="product.imagePath" alt="product.name" class="order__img">
-                        </a>
-                    </td>
+            <div class="order__wrapper">
+                <div class="empty" *ngIf="basketIsEmpty">
+                    <img src="../../../assets/images/cart-empty-img.svg" alt="Кошик порожній"
+                        class="empty__img">
+                    <p class="h5">Кошик порожній</p>
+                    <button [routerLink]="[ '/product/rolls' ]" class="btn btn-blue empty__btn" 
+                        (click)="toggleBasket()">
+                        Перейти до каталогу
+                    </button>
+                </div>
 
-                    <td class="order__td">
-                        <a [routerLink]="[ '/product/'+product.category.path, product.id ]" 
-                            class="order__link">
-                            {{ product.name }}
-                        </a>
-                    </td>
-
-                    <td class="order__td">
-                        <div class="count">
-                            <button class="count__btn" 
-                                (click)="productCount(product, false)">
-                                -
+                <table class="order__table"
+                    *ngIf="!basketIsEmpty">
+                    <tr *ngFor="let product of basket">
+                        <td class="order__td">
+                            <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+                                <img [src]="product.imagePath" alt="product.name" class="order__img">
+                            </a>
+                        </td>
+                        <td class="order__td">
+                            <a [routerLink]="[ '/product/'+product.category.path, product.id ]"
+                                class="order__link">
+                                {{ product.name }}
+                            </a>
+                        </td>
+                        <td class="order__td">
+                            <div class="count">
+                                <button class="count__btn"
+                                    (click)="productCount(product, false)">
+                                    -
+                                </button>
+                                <input type="text" class="count__input"
+                                    [value]="product.count" readonly>
+                                <button class="count__btn"
+                                    (click)="productCount(product, true)">
+                                    +
+                                </button>
+                            </div>
+                        </td>
+                        <td class="order__td">
+                            <span class="order__price">
+                                <b class="b">{{ product.price * product.count }}</b>
+                                грн
+                            </span>
+                        </td>
+                        <td class="order__td">
+                            <button class="order__del">
+                                <img src="../../../assets/images/trash.svg" alt="Видалити">
                             </button>
-                            <input type="text" class="count__input" 
-                                [value]="product.count" readonly>
-                            <button class="count__btn" 
-                                (click)="productCount(product, true)">
-                                +
-                            </button>
-                        </div>
-                    </td>
-
-                    <td class="order__td">
-                        <span class="order__price">
-                            <b class="b">{{ product.price * product.count }}</b>
-                            грн
-                        </span>
-                    </td>
-
-                    <td class="order__td">
-                        <button class="order__del">
-                            <img src="../../../assets/images/trash.svg" alt="Видалити">
-                        </button>
-                    </td>
-
-                </tr>
-            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
             <footer class="order__footer">
                 <span class="order__sum">Сума: <b class="b">{{ totalPrice }}</b> грн</span>

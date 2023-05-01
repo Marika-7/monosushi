@@ -14,7 +14,6 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const currentUser = JSON.parse(localStorage.getItem('monosushi_currentUser') as string);
     if(currentUser && currentUser.role === ROLE.ADMIN || currentUser.role === ROLE.USER) {
-      console.log('yes');
       return true;
     }
     return false;

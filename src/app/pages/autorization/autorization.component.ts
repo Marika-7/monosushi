@@ -1,26 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Firestore, doc, docData } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
+import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-autorization',
   templateUrl: './autorization.component.html',
   styleUrls: ['./autorization.component.scss']
 })
-export class AutorizationComponent implements OnInit {
+export class AutorizationComponent implements OnInit, OnDestroy {
 
   public authForm!: FormGroup;
+  public loginSubscription!: Subscription;
 
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    private auth: Auth,
+    private afs: Firestore,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.initAuthForm();
+  }
+
+  ngOnDestroy(): void {
+    this.loginSubscription.unsubscribe();
   }
 
   initAuthForm(): void {
@@ -30,22 +42,31 @@ export class AutorizationComponent implements OnInit {
     });
   }
 
-  login():void {
-    this.accountService.login(this.authForm.value).subscribe(data => {
-      if (data && data.length > 0) {
-        const user = data[0];
-        localStorage.setItem('monosushi_currentUser', JSON.stringify(user));
-        this.accountService.isUserLogin$.next(true);
-        if (user && user.role === ROLE.USER) {
+  loginUser(): void {
+    const { email, password } = this.authForm.value;
+    this.login(email, password)
+      .then(() => {
+        this.toastr.success('User successfully login');
+      }).catch(err => {
+        this.toastr.error('Wrong email or password');
+      })
+  }
+
+  async login(email: string, password: string): Promise<void> {
+    const credential = await signInWithEmailAndPassword(this.auth, email, password);
+    this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid))
+      .subscribe(user => {
+        const currentUser = { ...user, uid: credential.user.uid };
+        localStorage.setItem('monosushi_currentUser', JSON.stringify(currentUser));
+        if (user && user['role'] === ROLE.USER) {
           this.router.navigate(['/cabinet']);
-        } else if (user && user.role === ROLE.ADMIN) {
+        } else if (user && user['role'] === ROLE.ADMIN) {
           this.router.navigate(['/admin']);
         }
-      }
-      this.router.navigate(['/']);
-    }, (err) => {
-      console.log(err);
-    })
+        this.accountService.isUserLogin$.next(true);
+      }, (err) => {
+        console.log('error', err);
+      })
   }
 
 }

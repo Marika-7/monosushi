@@ -1,0 +1,109 @@
+<div class="auth">
+    <button type="button"
+        class="auth__close"
+        mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="auth__wrapper">
+        <h5 class="h5">{{ isLogin ? 'Вхід в кабінет' : 'Зареєструватись' }}</h5>
+
+        <form class="auth__form" 
+            *ngIf="isLogin" 
+            [formGroup]="authFormLogin" 
+            (ngSubmit)="loginUser()">
+        
+            <mat-form-field appearance="outline" color="primary"
+                class="auth__input">
+                <mat-label class="auth__label">Ваш email</mat-label>
+                <input matInput type="email"
+                    formControlName="email">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline" color="primary"
+                class="auth__input">
+                <mat-label class="auth__label">Пароль</mat-label>
+                <input matInput type="password"
+                    formControlName="password">
+            </mat-form-field>
+        
+            <button mat-raised-button color="primary" type="submit"
+                class="auth__btn" 
+                [disabled]="authFormLogin.invalid" 
+                mat-dialog-close>
+                Увійти в кабінет
+            </button>
+        </form>
+
+        <form class="auth__form" 
+            *ngIf="!isLogin" 
+            [formGroup]="authFormRegister" 
+            (ngSubmit)="registerUser()">
+
+            <div class="auth__row">
+                <mat-form-field appearance="outline" color="primary"
+                    class="auth__input">
+                    <mat-label class="auth__label">Ваше ім'я</mat-label>
+                    <input matInput type="text"
+                        formControlName="firstName">
+                </mat-form-field>
+            
+                <mat-form-field appearance="outline" color="primary"
+                    class="auth__input">
+                    <mat-label class="auth__label">Ваше прізвище</mat-label>
+                    <input matInput type="text"
+                        formControlName="lastName">
+                </mat-form-field>
+            </div>
+        
+            <mat-form-field appearance="outline" color="primary"
+                class="auth__input">
+                <mat-label class="auth__label">Ваш телефон</mat-label>
+                <input matInput type="text"
+                    formControlName="phoneNumber">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline" color="primary"
+                class="auth__input">
+                <mat-label class="auth__label">Ваш email</mat-label>
+                <input matInput type="email"
+                    formControlName="email">
+            </mat-form-field>
+
+            <div class="auth__row">
+                <mat-form-field appearance="outline" color="primary"
+                    class="auth__input">
+                    <mat-label class="auth__label">Пароль</mat-label>
+                    <input matInput type="password"
+                        formControlName="password">
+                </mat-form-field>
+            
+                <mat-form-field appearance="outline" color="primary"
+                    class="auth__input">
+                    <mat-label class="auth__label">Повторіть пароль</mat-label>
+                    <input matInput type="password"
+                        formControlName="password2">
+                </mat-form-field>
+            </div>
+        
+            <button mat-raised-button color="primary" type="submit"
+                class="auth__btn" 
+                [disabled]="authFormRegister.invalid" 
+                mat-dialog-close>
+                Зареєструватись
+            </button>
+        </form>
+
+        <div>
+            <span class="text-normal" *ngIf="!isLogin">
+                Вже зареєстровані?
+            </span>
+            <button type="button"
+                class="auth__link"
+                (click)="changeIsLogin()">
+                {{ isLogin ? 'Зареєструватись' : 'Увійти' }}
+            </button>
+        </div>
+
+    </div>
+</div>
