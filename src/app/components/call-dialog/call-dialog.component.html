@@ -1,0 +1,40 @@
+<div class="call">
+    
+    <button type="button"
+        class="call__close"
+        mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="call__wrapper">
+        <h2 class="h2">Ми зателефонуємо</h2>
+        <p class="text">Залиште номер телефону і наші менеджери зв'яжуться з вами</p>
+
+        <form class="call__form" 
+            [formGroup]="callForm" 
+            (ngSubmit)="callback()">
+
+            <mat-form-field appearance="outline" color="primary"
+                class="call__input">
+                <mat-label class="call__label">Ваше ім'я</mat-label>
+                <input matInput type="text"
+                    formControlName="name">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline" color="primary"
+                class="call__input">
+                <mat-label class="call__label">Ваш номер телефону</mat-label>
+                <input matInput type="text"
+                    formControlName="phoneNumber">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit"
+                class="call__btn" 
+                [disabled]="callForm.invalid" 
+                mat-dialog-close>
+                Надіслати
+            </button>
+
+        </form>
+    </div>
+</div>

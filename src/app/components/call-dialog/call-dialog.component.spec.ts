@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AutorizationComponent } from './autorization.component';
+import { CallDialogComponent } from './call-dialog.component';
 
-describe('AutorizationComponent', () => {
-  let component: AutorizationComponent;
-  let fixture: ComponentFixture<AutorizationComponent>;
+describe('CallDialogComponent', () => {
+  let component: CallDialogComponent;
+  let fixture: ComponentFixture<CallDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AutorizationComponent ]
+      declarations: [ CallDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AutorizationComponent);
+    fixture = TestBed.createComponent(CallDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,12 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
+
+export interface IRegister {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  email: string;
+  password: string;
+  confirmPassword?: string;
+}
 
 @Component({
   selector: 'app-auth-dialog',
@@ -15,10 +24,12 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 })
 export class AuthDialogComponent implements OnInit {
 
-  public authFormLogin!: FormGroup;
-  public authFormRegister!: FormGroup;
+  public loginForm!: FormGroup;
+  public registerForm!: FormGroup;
   public loginSubscription!: Subscription;
   public isLogin = true;
+  private registerData!: IRegister;
+  public checkPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -30,26 +41,30 @@ export class AuthDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initAuthForm();
+    this.initLoginForm();
+    this.initRegisterForm();
   }
 
-  initAuthForm(): void {
-    this.authFormLogin = this.fb.group({
+  initLoginForm(): void {
+    this.loginForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required]
     });
-    this.authFormRegister = this.fb.group({
+  }
+
+  initRegisterForm(): void {
+    this.registerForm = this.fb.group({
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
       phoneNumber: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       password: [null, Validators.required],
-      password2: [null, Validators.required]
+      confirmPassword: [null, Validators.required]
     });
   }
 
   loginUser(): void {
-    const { email, password } = this.authFormLogin.value;
+    const { email, password } = this.loginForm.value;
     this.login(email, password)
       .then(() => {
         this.toastr.success('Ваш кабінет');
@@ -76,28 +91,25 @@ export class AuthDialogComponent implements OnInit {
   }
 
   registerUser(): void {
-    if (this.authFormRegister.value.password === this.authFormRegister.value.password2) {
-      const { email, password } = this.authFormRegister.value;
-      this.emailSignUp(email, password)
-        .then(() => {
-          this.toastr.success('Новий аккаунт створено');
-          this.isLogin = !this.isLogin;
-          this.authFormRegister.reset();
-        }).catch(err => {
-          this.toastr.error(err.message.slice(10));
-        })
-    } else {
-      this.toastr.error('Паролі не співпадають');
-    }
+    const { email, password } = this.registerForm.value;
+    this.registerData = this.registerForm.value;
+    this.emailSignUp(email, password)
+      .then(() => {
+        this.toastr.success('Новий аккаунт створено');
+        this.isLogin = !this.isLogin;
+        this.registerForm.reset();
+      }).catch(err => {
+        this.toastr.error(err.message.slice(10));
+      })
   }
 
   async emailSignUp(email: string, password: string): Promise<void> {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = {
       email: credential.user.email,
-      firstName: this.authFormRegister.value.firstName,
-      lastName: this.authFormRegister.value.lastName,
-      phoneNumber: this.authFormRegister.value.phoneNumber,
+      firstName: this.registerData.firstName,
+      lastName: this.registerData.lastName,
+      phoneNumber: this.registerData.phoneNumber,
       adress: '',
       role: 'USER',
       orders: []
@@ -107,6 +119,28 @@ export class AuthDialogComponent implements OnInit {
 
   changeIsLogin(): void {
     this.isLogin = !this.isLogin;
+  }
+
+  checkConfirmedPassword(): void {
+    this.checkPassword = this.password.value === this.confirmed.value;
+    if (this.password.value !== this.confirmed.value) {
+      this.registerForm.controls['confirmPassword'].setErrors({
+        matchError: 'Пароль не співпадає'
+      });
+      this.toastr.error('Пароль не співпадає');
+    }
+  }
+
+  get password(): AbstractControl {
+    return this.registerForm.controls['password'];
+  }
+
+  get confirmed(): AbstractControl {
+    return this.registerForm.controls['confirmPassword'];
+  }
+
+  checkVisibilityError(control: string, name: string): boolean | null {
+    return this.registerForm.controls[control].errors?.[name];
   }
 
 }

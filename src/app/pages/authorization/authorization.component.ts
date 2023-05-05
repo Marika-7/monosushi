@@ -9,11 +9,11 @@ import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-autorization',
-  templateUrl: './autorization.component.html',
-  styleUrls: ['./autorization.component.scss']
+  selector: 'app-authorization',
+  templateUrl: './authorization.component.html',
+  styleUrls: ['./authorization.component.scss']
 })
-export class AutorizationComponent implements OnInit, OnDestroy {
+export class AuthorizationComponent implements OnInit, OnDestroy {
 
   public authForm!: FormGroup;
   public loginSubscription!: Subscription;

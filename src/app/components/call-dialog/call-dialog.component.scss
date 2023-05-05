@@ -2,11 +2,12 @@
 @import 'src/app/shared/styles/mixins';
 @import 'src/app/shared/styles/variables';
 
-.auth {
+.call {
     width: 600px;
     padding: 15px;
     display: flex;
     flex-direction: column;
+    font-family: 'RotondaC', sans-serif;
     @include screen-768 {
         width: 100%;
     }
@@ -21,10 +22,18 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        gap: 10px;
+        gap: 20px;
         @include screen-768 {
             margin: 10px 20px 20px;
         }
+    }
+    .h2 {
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
+    .text {
+        width: 360px;
+        text-align: center;
     }
     &__form {
         width: 100%;
@@ -32,14 +41,6 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-    }
-    h5 {
-        font-size: 24px;
-    }
-    &__row {
-        width: 100%;
-        display: flex;
-        gap: 15px;
     }
     &__input {
         width: 100%;
@@ -63,15 +64,5 @@
         &:hover {
             background-color: transparent;
         }
-    }
-    &__link {
-        margin-top: 20px;
-        font-family: 'RotondaC', sans-serif;
-        font-weight: bold;
-        font-size: 14px;
-        color: $text_bold;
-    }
-    .text-normal {
-        font-size: 15px;
     }
 }

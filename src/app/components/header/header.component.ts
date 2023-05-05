@@ -7,6 +7,7 @@ import { ROLE } from 'src/app/shared/constants/role.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import { CallDialogComponent } from '../call-dialog/call-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -55,6 +56,39 @@ export class HeaderComponent implements OnInit {
     this.burgerIsOpen = false
   }
 
+  openCallDialog(): void {
+    this.dialog.open(CallDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    });
+  }
+
+  checkUserLogin(): void {
+    const currentUser = JSON.parse(localStorage.getItem('monosushi_currentUser') as string);
+    if (currentUser && currentUser.role === ROLE.ADMIN) {
+      this.loginUrl = 'admin';
+    } else if (currentUser && currentUser.role === ROLE.USER) {
+      this.loginUrl = 'cabinet';
+    } else {
+      this.loginUrl = '';
+    }
+  }
+
+  checkUpdatesUserLogin(): void {
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkUserLogin();
+    })
+  }
+
+  openLoginDialog():void {
+    this.dialog.open(AuthDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    });
+  }
+
   toggleBasket(): void {
     this.basketIsOpen = !this.basketIsOpen;
   }
@@ -90,31 +124,14 @@ export class HeaderComponent implements OnInit {
     } else if (!value && product.count > 1) {
       --product.count;
     }
+    localStorage.setItem('monosushi_basket', JSON.stringify(this.basket));
+    this.orderService.changeBasket.next(true);
   }
-
-  checkUserLogin(): void {
-    const currentUser = JSON.parse(localStorage.getItem('monosushi_currentUser') as string);
-    if (currentUser && currentUser.role === ROLE.ADMIN) {
-      this.loginUrl = 'admin';
-    } else if (currentUser && currentUser.role === ROLE.USER) {
-      this.loginUrl = 'cabinet';
-    } else {
-      this.loginUrl = 'auth';
-    }
-  }
-
-  checkUpdatesUserLogin(): void {
-    this.accountService.isUserLogin$.subscribe(() => {
-      this.checkUserLogin();
-    })
-  }
-
-  openLoginDialog():void {
-    this.dialog.open(AuthDialogComponent, {
-      backdropClass: 'dialog-back',
-      panelClass: 'auth-dialog',
-      autoFocus: false
-    })
+  
+  deleteFromBasket(product: IProductResponse): void {
+    this.basket.splice(this.basket.indexOf(product), 1);
+    localStorage.setItem('monosushi_basket', JSON.stringify(this.basket));
+    this.orderService.changeBasket.next(true);
   }
 
 }

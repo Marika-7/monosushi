@@ -10,7 +10,7 @@
 
         <form class="auth__form" 
             *ngIf="isLogin" 
-            [formGroup]="authFormLogin" 
+            [formGroup]="loginForm" 
             (ngSubmit)="loginUser()">
         
             <mat-form-field appearance="outline" color="primary"
@@ -29,7 +29,7 @@
         
             <button mat-raised-button color="primary" type="submit"
                 class="auth__btn" 
-                [disabled]="authFormLogin.invalid" 
+                [disabled]="loginForm.invalid" 
                 mat-dialog-close>
                 Увійти в кабінет
             </button>
@@ -37,7 +37,7 @@
 
         <form class="auth__form" 
             *ngIf="!isLogin" 
-            [formGroup]="authFormRegister" 
+            [formGroup]="registerForm" 
             (ngSubmit)="registerUser()">
 
             <div class="auth__row">
@@ -82,13 +82,17 @@
                     class="auth__input">
                     <mat-label class="auth__label">Повторіть пароль</mat-label>
                     <input matInput type="password"
-                        formControlName="password2">
+                        formControlName="confirmPassword" 
+                        (input)="checkConfirmedPassword()">
                 </mat-form-field>
             </div>
+            <!-- <mat-error *ngIf="checkVisibilityError('confirmPassword', 'matchError')">
+                Пароль не співпадає
+            </mat-error> -->
         
             <button mat-raised-button color="primary" type="submit"
                 class="auth__btn" 
-                [disabled]="authFormRegister.invalid" 
+                [disabled]="registerForm.invalid" 
                 mat-dialog-close>
                 Зареєструватись
             </button>

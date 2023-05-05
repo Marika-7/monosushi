@@ -11,9 +11,16 @@
             </li>
             <li>
                 <button type="button" class="nav__link" 
-                    [ngClass]="{'active': !isPerson}"
+                    [ngClass]="{'active': !isPerson&&!isEditPassword}"
                     (click)="showOrders()">
                     Історія замовлень
+                </button>
+            </li>
+            <li>
+                <button type="button" class="nav__link" 
+                    [ngClass]="{'active': isEditPassword}"
+                    (click)="showEditPassword()">
+                    Зміна паролю
                 </button>
             </li>
         </ul>
@@ -33,22 +40,22 @@
                     Особисті дані
                 </h5>
 
-                <form class="person__form" 
+                <form class="form" 
                     [formGroup]="personForm">
                     <input type="text" placeholder="*Ваше ім'я" 
-                        class="person__input" 
+                        class="input" 
                         formControlName="firstName">
 
                     <input type="text" placeholder="*Ваше прізвище" 
-                        class="person__input" 
+                        class="input" 
                         formControlName="lastName">
 
                     <input type="text" placeholder="*Ваш телефон" 
-                            class="person__input" 
+                            class="input" 
                             formControlName="phoneNumber">
 
                     <input type="text" placeholder="*Ваш email" 
-                        class="person__input" 
+                        class="input" 
                         formControlName="email">
                 </form>
             </div>
@@ -71,9 +78,74 @@
             </div>
         </section>
 
-        <section class="orders" 
-            *ngIf="!isPerson">
+        <section 
+            *ngIf="!isPerson&&!isEditPassword">
             <h5 class="h5">Історія замовлень</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>№ замовлення</th>
+                        <th>Дата і час</th>
+                        <th>Адреса</th>
+                        <th>Сума</th>
+                        <th>Статус</th>
+                        <th>1</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let order of userOrders">
+                        <td colspan="6">
+                            <table class="table-inner">
+                                <thead>
+                                    <tr>
+                                        <th><b>№ {{ order.id }}</b></th>
+                                        <th>{{ order.data }}</th>
+                                        <th>{{ order.adress }}</th>
+                                        <th><b>{{ order.sum }}</b> грн</th>
+                                        <th class="status"> {{ order.status }}</th>
+                                        <th>
+                                            <button class="line">Повторити</button>
+                                        </th>
+                                    </tr>
+                                    <tr *ngFor="let product of order.products">
+                                        <td></td>
+                                        <td colspan="2">{{ product.name }}</td>
+                                        <td>{{ product.count }}</td>
+                                        <td colspan="2" rowspan="2"></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
+
+        <section class="password" 
+            *ngIf="isEditPassword">
+            <h5 class="h5">Зміна паролю</h5>
+            <form class="form" 
+            [formGroup]="passwordForm">
+            <input type="password" placeholder="*Ваш поточний пароль" 
+                class="input" 
+                formControlName="oldPassword">
+            <input type="password" placeholder="*Новий пароль" 
+                class="input" 
+                formControlName="newPassword">
+            <input type="password" placeholder="*Повторить пароль" 
+                class="input" 
+                formControlName="confirmPassword">
+            <div class="form__row">
+                <button class="btn btn-white">
+                    Скасувати
+                </button>
+                <button class="btn btn-blue">
+                    Зберегти зміни
+                </button>
+            </div>
+        </form>
+        </section>
+
     </div>
 </div>

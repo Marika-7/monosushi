@@ -59,7 +59,8 @@
             Акції</a>
         <span class="mobile__tel text-bold">(097) 878 08 37</span>
         <div class="mobile__callback callback-m" *ngIf="screenIs1200">
-            <button class="callback-m__btn btn btn-blue">
+            <button class="callback-m__btn btn btn-blue" 
+                (click)="openCallDialog()">
                 <img src="../../../assets/images/phone.svg" alt="Callback">
                 <span>Ми зателефонуємо</span>
             </button>
@@ -68,7 +69,8 @@
 
     <div class="callback" 
         *ngIf="!screenIs1200">
-        <button class="callback__btn btn btn-blue">
+        <button class="callback__btn btn btn-blue" 
+            (click)="openCallDialog()">
             <img src="../../../assets/images/phone.svg" alt="Callback">
                 <span class="callback__span">Ми зателефонуємо</span>
         </button>
@@ -84,9 +86,15 @@
     </div>
 
     <div class="user border">
-        <button (click)="openLoginDialog()" class="user__btn">
-            <img src="../../../assets/images/user.svg" [alt]="loginUrl" [title]="loginUrl">
+        <button *ngIf="!loginUrl" 
+            (click)="openLoginDialog()" class="user__btn">
+            <img src="../../../assets/images/user.svg" [alt]="loginUrl">
         </button>
+        <a *ngIf="loginUrl" 
+            [routerLink]="[ '/'+loginUrl ]" class="user__btn">
+            <img src="../../../assets/images/user.svg" alt="User" 
+                [title]="loginUrl">
+        </a>
     </div>
 
     <button class="basket" 
@@ -153,7 +161,8 @@
                             </span>
                         </td>
                         <td class="order__td">
-                            <button class="order__del">
+                            <button class="order__del" 
+                                (click)="deleteFromBasket(product)">
                                 <img src="../../../assets/images/trash.svg" alt="Видалити">
                             </button>
                         </td>

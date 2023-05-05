@@ -1,6 +1,7 @@
-@import '../../shared/styles/fonts';
-@import '../../shared/styles/variables';
-@import '../../shared/styles/mixins';
+@import 'src/app/shared/styles/fonts';
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+@import 'src/app/shared/styles/forms';
 
 .cabinet {
     font-family: 'RotondaC', sans-serif;
@@ -75,24 +76,13 @@
             text-align: center;
         }
     }
-    &__form {
-        max-width: 600px;
+    .form {
         margin-top: 20px;
         margin-bottom: 40px;
-        display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 50px 50px 50px;
-        gap: 15px 20px;
+        grid-template-rows: 56px 56px 56px;
     }
-    &__input {
-        padding: 12px 20px;
-        border: 1px solid $border_gray;
-        border-radius: 10px;
-        font-size: 16px;
-        &:hover {
-            padding: 11px 19px;
-            border: 2px solid $color_main;
-        }
+    .input {
         &:nth-child(1) {
             grid-area: 1 / 1 / 2 / 2;
         }
@@ -118,8 +108,59 @@
     }
 }
 
-.orders {
-    h5 {
-        text-align: center;
+.table {
+    width: 100%;
+    min-width: 600px;
+    th,
+    td {
+        width: calc(100% / 8);
+        height: 50px;
+        font-weight: normal;
+        color: $text_normal;
+        text-align: left;
+        &:nth-of-type(2), 
+        &:nth-of-type(3) {
+            width: calc(100% / 4);
+        }
+    }
+    .table-inner {
+        width: 100%;
+        th {
+            border-top: 2px solid $color_main;
+        }
+        td {
+            border-top: 1px solid $border_gray;
+        }
+    }
+    b {
+        color: $text-bold;
+    }
+    .status {
+        color: $green;
+        font-size: 14px;
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: $green;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+    }
+    .line {
+        color: $color_main;
+        font-weight: bold;
+        font-size: 14px;
+    }
+}
+
+.password {
+    .form {
+        grid-template-columns: 1fr;
+        grid-template-rows: 56px 56px 56px 56px;
+        .btn {
+            width: 250px;
+        }
     }
 }
