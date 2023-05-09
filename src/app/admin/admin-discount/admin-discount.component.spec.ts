@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminDiscountComponent } from './admin-discount.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Storage } from '@angular/fire/storage';
+import { ToastrService } from 'ngx-toastr';
 
 describe('AdminDiscountComponent', () => {
   let component: AdminDiscountComponent;
@@ -8,7 +11,14 @@ describe('AdminDiscountComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminDiscountComponent ]
+      declarations: [ AdminDiscountComponent ],
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [
+        { provide: Storage, useValue: {} },
+        { provide: ToastrService, useValue: {} }
+      ]
     })
     .compileComponents();
 
@@ -20,4 +30,22 @@ describe('AdminDiscountComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set values null for inputs', () => {
+    const testValues = {
+      name: null,
+      header: null,
+      description: null,
+      imagePath: null
+    };
+    component.initDiscountForm();
+    expect(component.discountForm.value).toEqual(testValues);
+  });
+
+  it('should set the opposite value', () => {
+    const startValue = component.inputsIsOpen;
+    component.toggleOpenForm();
+    expect(component.inputsIsOpen).not.toBe(startValue);
+  });
+
 });

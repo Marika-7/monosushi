@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AuthorizationComponent } from './authorization.component';
 import { AuthorizationRoutingModule } from './autorization-routing.module';
-import { SharedModule } from 'src/app/shared/styles/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [

@@ -19,8 +19,14 @@ export class DiscountInfoComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response => {
       this.currentDiscount = response['discountInfo'];
-    })
-    this.list = this.currentDiscount.description.split('\n');
+    });
+    this.createList();
+  }
+
+  createList(): void {
+    if (this.currentDiscount) {
+      this.list = this.currentDiscount.description.split('\n');
+    }
   }
 
 }

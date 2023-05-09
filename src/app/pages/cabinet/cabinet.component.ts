@@ -77,12 +77,21 @@ export class CabinetComponent implements OnInit {
 
   initPersonForm(): void {
     const currentUser = JSON.parse(localStorage.getItem('monosushi_currentUser') as string);
-    this.personForm = this.fb.group({
-      firstName: [currentUser.firstName, Validators.required],
-      lastName: [currentUser.lastName, Validators.required],
-      phoneNumber: [currentUser.phoneNumber, Validators.required],
-      email: [currentUser.email, [Validators.required, Validators.email]]
-    });
+    if (currentUser) {
+      this.personForm = this.fb.group({
+        firstName: [currentUser.firstName, Validators.required],
+        lastName: [currentUser.lastName, Validators.required],
+        phoneNumber: [currentUser.phoneNumber, Validators.required],
+        email: [currentUser.email, [Validators.required, Validators.email]]
+      });
+    } else {
+      this.personForm = this.fb.group({
+        firstName: [null, Validators.required],
+        lastName: [null, Validators.required],
+        phoneNumber: [null, Validators.required],
+        email: [null, [Validators.required, Validators.email]]
+      });
+    }
   }
 
   initPasswordForm(): void {

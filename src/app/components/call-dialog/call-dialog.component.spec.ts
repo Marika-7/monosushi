@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CallDialogComponent } from './call-dialog.component';
+import { ToastrService } from 'ngx-toastr';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CallDialogComponent', () => {
   let component: CallDialogComponent;
@@ -8,7 +10,11 @@ describe('CallDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CallDialogComponent ]
+      declarations: [ CallDialogComponent ],
+      providers: [
+        { provide: ToastrService, useValue: {} }
+      ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
 
@@ -20,4 +26,14 @@ describe('CallDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set values null for inputs', () => {
+    const testValues = {
+      name: null,
+      phoneNumber: null
+    };
+    component.initCallForm();
+    expect(component.callForm.value).toEqual(testValues);
+  });
+
 });

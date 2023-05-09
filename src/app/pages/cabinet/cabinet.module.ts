@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CabinetComponent } from './cabinet.component';
 import { CabinetRoutingModule } from './cabinet-routing.module';
-import { SharedModule } from 'src/app/shared/styles/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [

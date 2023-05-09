@@ -14,7 +14,7 @@ export class ProductComponent implements OnDestroy {
 
   public userProducts: IProductResponse[] = [];
   public nameOfPage = '';
-  private eventSubscription!: Subscription;
+  public eventSubscription!: Subscription;
 
   constructor (
     private productService: ProductService,

@@ -22,7 +22,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 
 import { ToastrModule } from 'ngx-toastr';
-import { SharedModule } from './shared/styles/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { CallDialogComponent } from './components/call-dialog/call-dialog.component';
 
 @NgModule({
