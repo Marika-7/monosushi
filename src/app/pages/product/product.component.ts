@@ -34,9 +34,14 @@ export class ProductComponent implements OnDestroy {
     if (!categoryName) {
       categoryName = 'rolls';
     }
-    this.productService.getAllByCategory(categoryName)
+    // this.productService.getAllByCategory(categoryName)
+    //   .subscribe(data => {
+    //     this.userProducts = data;
+    //     this.nameOfPage = this.userProducts[0].category.name;
+    //   });
+    this.productService.getAllByCategoryFirebase(categoryName)
       .subscribe(data => {
-        this.userProducts = data;
+        this.userProducts = data as IProductResponse[];
         this.nameOfPage = this.userProducts[0].category.name;
       });
   }

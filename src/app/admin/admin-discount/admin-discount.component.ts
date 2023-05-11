@@ -14,7 +14,7 @@ export class AdminDiscountComponent implements OnInit {
 
   public adminDiscounts!: IDiscountResponse[];
   public discountForm!: FormGroup;
-  private currentDiscountId = 0;
+  private currentDiscountId!: string | number;
   public inputsIsOpen = false;
   public editStatus = false;
   public isUploaded = false;
@@ -33,9 +33,13 @@ export class AdminDiscountComponent implements OnInit {
     }
   
     loadDiscounts(): void {
-      this.discountService.getAll()
+      // this.discountService.getAll()
+      //   .subscribe(data => {
+      //     this.adminDiscounts = data;
+      //   });
+      this.discountService.getAllFirebase()
         .subscribe(data => {
-          this.adminDiscounts = data;
+          this.adminDiscounts = data as IDiscountResponse[];
         });
     }
   
@@ -54,14 +58,24 @@ export class AdminDiscountComponent implements OnInit {
   
     saveDiscount(): void {
       if (this.editStatus) {
-        this.discountService.update(this.discountForm.value, this.currentDiscountId)
-          .subscribe(() => {
+        // this.discountService.update(this.discountForm.value, this.currentDiscountId as number)
+        //   .subscribe(() => {
+        //     this.loadDiscounts();
+        //     this.toastr.success('Discount successfully updated');
+        //   })
+        this.discountService.updateFirebase(this.discountForm.value, this.currentDiscountId as string)
+          .then(() => {
             this.loadDiscounts();
             this.toastr.success('Discount successfully updated');
           })
       } else {
-        this.discountService.create(this.discountForm.value)
-          .subscribe(() => {
+        // this.discountService.create(this.discountForm.value)
+        //   .subscribe(() => {
+        //     this.loadDiscounts();
+        //     this.toastr.success('Discount successfully created');
+        //   })
+        this.discountService.createFirebase(this.discountForm.value)
+          .then(() => {
             this.loadDiscounts();
             this.toastr.success('Discount successfully created');
           })
@@ -80,15 +94,21 @@ export class AdminDiscountComponent implements OnInit {
         description: discount.description,
         imagePath: discount.imagePath
       });
-      this.currentDiscountId = discount.id;
+      // this.currentDiscountId = discount.id as number;
+      this.currentDiscountId = discount.id as string;
       this.editStatus = true;
       this.inputsIsOpen = true;
       this.isUploaded = true;
     }
   
     deleteDiscount(discount: IDiscountResponse): void {
-      this.discountService.delete(discount.id)
-        .subscribe(() => {
+      // this.discountService.delete(discount.id as number)
+      //   .subscribe(() => {
+      //     this.loadDiscounts();
+      //     this.toastr.success('Discount successfully deleted');
+      //   })
+        this.discountService.deleteFirebase(discount.id as string)
+        .then(() => {
           this.loadDiscounts();
           this.toastr.success('Discount successfully deleted');
         })

@@ -20,7 +20,7 @@ export class AdminProductComponent implements OnInit {
   public inputsIsOpen = false;
   public editStatus = false;
   public isUploaded = false;
-  private currentProductId = 0;
+  private currentProductId!: string | number;
 
   constructor(
     private fb: FormBuilder,
@@ -38,9 +38,16 @@ export class AdminProductComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.categoryService.getAll()
+    // this.categoryService.getAll()
+    //   .subscribe(data => {
+    //   this.adminCategories = data;
+    //   this.productForm.patchValue({
+    //     category: this.adminCategories[0].id
+    //   })
+    // });
+    this.categoryService.getAllFirebase()
       .subscribe(data => {
-      this.adminCategories = data;
+      this.adminCategories = data as ICategoryResponse[];
       this.productForm.patchValue({
         category: this.adminCategories[0].id
       })
@@ -48,9 +55,13 @@ export class AdminProductComponent implements OnInit {
   }
 
   loadProducts(): void {
-    this.productService.getAll()
+    // this.productService.getAll()
+    //   .subscribe(data => {
+    //   this.adminProducts = data;
+    // })
+    this.productService.getAllFirebase()
       .subscribe(data => {
-      this.adminProducts = data;
+      this.adminProducts = data as IProductResponse[];
     })
   }
 
@@ -72,15 +83,26 @@ export class AdminProductComponent implements OnInit {
   }
 
   saveProduct(): void {
+    this.productForm.value.count = 1;
     if (this.editStatus) {
-      this.productService.update(this.productForm.value, this.currentProductId)
-        .subscribe(() => {
+      // this.productService.update(this.productForm.value, this.currentProductId as number)
+      //   .subscribe(() => {
+      //     this.loadProducts();
+      //     this.toastr.success('Product successfully updated');
+      //   })
+      this.productService.updateFirebase(this.productForm.value, this.currentProductId as string)
+        .then(() => {
           this.loadProducts();
           this.toastr.success('Product successfully updated');
         })
     } else {
-      this.productService.create(this.productForm.value)
-        .subscribe(() => {
+      // this.productService.create(this.productForm.value)
+      //   .subscribe(() => {
+      //   this.loadProducts();
+      //   this.toastr.success('Product successfully created');
+      // })
+      this.productService.createFirebase(this.productForm.value)
+        .then(() => {
         this.loadProducts();
         this.toastr.success('Product successfully created');
       })
@@ -102,15 +124,21 @@ export class AdminProductComponent implements OnInit {
       price: product.price,
       imagePath: product.imagePath
     });
-    this.currentProductId = product.id;
+    // this.currentProductId = product.id as number;
+    this.currentProductId = product.id as string;
     this.editStatus = true;
     this.isUploaded = true;
     this.inputsIsOpen = true;
   }
 
   deleteProduct(product: IProductResponse): void {
-    this.productService.delete(product.id)
-      .subscribe(() => {
+    // this.productService.delete(product.id as number)
+    //   .subscribe(() => {
+    //     this.loadProducts();
+    //     this.toastr.success('Product successfully deleted');
+    //   })
+    this.productService.deleteFirebase(product.id as string)
+      .then(() => {
         this.loadProducts();
         this.toastr.success('Product successfully deleted');
       })

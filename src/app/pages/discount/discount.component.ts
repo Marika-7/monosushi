@@ -20,9 +20,13 @@ export class DiscountComponent implements OnInit {
   }
 
   loadDiscount(): void {
-    this.discountService.getAll()
+    // this.discountService.getAll()
+    //   .subscribe(data => {
+    //     this.userDiscounts = data;
+    //   });
+    this.discountService.getAllFirebase()
       .subscribe(data => {
-        this.userDiscounts = data;
+        this.userDiscounts = data as IDiscountResponse[];
       });
   }
 
